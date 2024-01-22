@@ -1,0 +1,7 @@
+svg.rainx-logo path.path-other {
+  fill: var(--color-logo-other-fill-color);
+}
+
+svg.rainx-logo path.path-i {
+  fill: var(--color-logo-i-fill-color);
+}

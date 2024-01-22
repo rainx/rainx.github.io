@@ -6,15 +6,36 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --color-dark-background: #222;
+  --color-light-background: #f1f1f1;
+  --color-logo-i-fill-color-on-light-background: #004e8c;
+  --color-logo-other-fill-color-on-light-background: #52504e;
+  --color-logo-i-fill-color-on-dark-background: #f2eb4f;
+  --color-logo-other-fill-color-on-dark-background: #ffffff;
+  --color-cta-icon-normal: #3b3a39;
+  --color-cta-icon-active: dimgray;
+
+  --color-background: var(--color-light-background);
+  --color-logo-i-fill-color: var(--color-logo-i-fill-color-on-light-background);
+  --color-logo-other-fill-color: var(
+    --color-logo-other-fill-color-on-light-background
+  );
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--color-dark-background);
+    --color-logo-i-fill-color: var(
+      --color-logo-i-fill-color-on-dark-background
+    );
+    --color-logo-other-fill-color: var(
+      --color-logo-other-fill-color-on-dark-background
+    );
+
+    --color-cta-icon-normal: #eee;
+    --color-cta-icon-active: #ccc;
+  }
 }
 
 html,
@@ -25,10 +46,5 @@ body,
   display: flex;
   width: 100%;
   height: 100%;
-  background-color: f1f1f1;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  background-color: var(--color-background);
 }

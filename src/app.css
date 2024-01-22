@@ -28,11 +28,11 @@ body > #root > section > footer > ul > li {
 }
 
 body > #root > section > footer > ul > li > a {
-  color: #3b3a39;
+  color: var(--color-cta-icon-normal);
   text-decoration: none;
 }
 
 body > #root > section > footer > ul > li > a:hover,
 body > #root > section > footer > ul > li > a:active {
-  color: dimgray;
+  color: var(--color-cta-icon-active);
 }
