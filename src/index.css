@@ -1,4 +1,7 @@
 :root {
+  --color-brand-yellow: #f7ea48;
+  --color-brand-blue: #004b87;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -9,9 +12,9 @@
 
   --color-dark-background: #222;
   --color-light-background: #f1f1f1;
-  --color-logo-i-fill-color-on-light-background: #004e8c;
+  --color-logo-i-fill-color-on-light-background: var(--color-brand-blue);
   --color-logo-other-fill-color-on-light-background: #52504e;
-  --color-logo-i-fill-color-on-dark-background: #f2eb4f;
+  --color-logo-i-fill-color-on-dark-background: var(--color-brand-yellow);
   --color-logo-other-fill-color-on-dark-background: #ffffff;
   --color-cta-icon-normal: #3b3a39;
   --color-cta-icon-active: dimgray;
