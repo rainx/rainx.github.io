@@ -4,6 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "homepage": "https://rainx.github.io/",
+  "engines": {
+    "pnpm": "^9.0.2"
+  },
+  "packageManager": "pnpm@9.0.2",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -16,7 +20,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
-  "packageManager": "pnpm@8.14.0",
   "devDependencies": {
     "@rightcapital/eslint-config-typescript-react": "^17.0.3",
     "@rightcapital/prettier-config": "^6.0.15",
