@@ -1,15 +1,19 @@
-body > #root > section {
+.section {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: auto;
   text-align: center;
+  width: 100vw;
+  height: 100vh;
 }
 
-body > #root > section > header {
+.header {
   margin-bottom: 150px;
 }
 
-body > #root > section > footer > ul {
+.footer {
   list-style: none;
   font-size: 30px;
   font-weight: regular;
@@ -21,18 +25,26 @@ body > #root > section > footer > ul {
   margin: 0;
 }
 
-body > #root > section > footer > ul > li {
+.footer li {
   list-style: none;
   justify-content: space-between;
   flex: 1;
 }
 
-body > #root > section > footer > ul > li > a {
+.footer li a {
   color: var(--color-cta-icon-normal);
   text-decoration: none;
 }
 
-body > #root > section > footer > ul > li > a:hover,
-body > #root > section > footer > ul > li > a:active {
+.footer li a:hover,
+.footer li a:active {
   color: var(--color-cta-icon-active);
+}
+
+.seeMore {
+  font-size: 20px;
+  font-weight: regular;
+  color: var(--color-cta-icon-normal);
+  position: fixed;
+  bottom: 20px;
 }

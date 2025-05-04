@@ -1,0 +1,86 @@
+.wrapperSection {
+  height: 300vh;
+  position: relative;
+  background-color: #fff;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  top: 0;
+}
+
+.sectionScene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.sectionTypographyLayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.sectionSpriteLayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sectionBackgroundLayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hometownImage {
+  width: 50vw;
+  height: 50vh;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 10px;
+  margin-bottom: 10vh;
+}
+
+.sectionTypographyLayer h2 {
+  display: block;
+  position: absolute;
+  flex-direction: column;
+  z-index: 100;
+  left: 10vw;
+}
+
+.sectionTypographyLayer p {
+  display: block;
+  position: absolute;
+  flex-direction: column;
+  z-index: 100;
+  margin-right: 10vw;
+  left: 10vw;
+  top: 20vh;
+}

@@ -1,0 +1,177 @@
+.wrapperSection {
+  height: 400vh;
+  position: relative;
+  background-color: #fff;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  top: 0;
+}
+
+.sectionScene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.sectionTypographyLayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  z-index: 100;
+  padding-left: 10vw;
+  padding-right: 10vw;
+
+  h2 {
+    display: block;
+    z-index: 100;
+    top: 20vh;
+  }
+
+  p {
+    display: block;
+    z-index: 100;
+  }
+
+  /* passthrough the click event to the layer below */
+  pointer-events: none;
+}
+
+.sectionSpriteLayer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+
+  .screenSpriteWrapper {
+    position: relative;
+    width: min(60vw, 60vh);
+    height: min(45vw, 45vh);
+    z-index: 10;
+    background-color: #4f7343;
+    align-self: flex-end;
+    margin-bottom: 15vh;
+    margin-right: 10vw;
+    margin-left: 10vw;
+    border-radius: 10px;
+
+    .screenLightSprite {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      z-index: 10;
+    }
+
+    code {
+      box-sizing: border-box;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: min(5vh, 5vw);
+      font-size: min(2vh, 2vw);
+      font-family: monospace;
+      color: #eee;
+      z-index: 10;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        padding: min(5vh, 5vw);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          list-style: none;
+
+          a {
+            text-decoration: none;
+            color: #eee;
+          }
+        }
+      }
+    }
+  }
+
+  .basicSpriteWrapper {
+    position: relative;
+    width: min(60vw, 60vh);
+    height: min(60vw, 60vh);
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    width: min(60vw, 60vh);
+    height: min(60vw, 60vh);
+
+    border-radius: 10px;
+    margin-bottom: 10vh;
+    align-self: flex-end;
+    margin-right: 10vw;
+    margin-left: 10vw;
+
+    .basicSpriteLight {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .basicSprite {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+.sectionBackgroundLayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #faf6f0;
+  z-index: 0;
+}

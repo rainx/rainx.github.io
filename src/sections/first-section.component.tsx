@@ -1,14 +1,26 @@
-import './app.css';
-import { Logo } from './logo.component';
+import { useEffect, useState } from 'react';
+import styles from './first-section.module.css';
+import { Logo } from '../logo.component';
+import { AnimatePresence, motion } from 'motion/react';
 
-function App() {
+export function FirstSection() {
+  const [isSeeMoreVisible, setIsSeeMoreVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsSeeMoreVisible(window.scrollY < 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <section>
-      <header>
+    <section className={styles.section}>
+      <header className={styles.header}>
         <Logo />
       </header>
       <footer>
-        <ul>
+        <ul className={styles.footer}>
           <li>
             <a
               href="https://github.com/rainx"
@@ -65,8 +77,32 @@ function App() {
           </li>
         </ul>
       </footer>
+
+      <AnimatePresence>
+        {isSeeMoreVisible && (
+          <motion.h2
+            className={styles.seeMore}
+            initial={{ opacity: 1 }}
+            animate={{ opacity: isSeeMoreVisible ? 1 : 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            Scroll down to get to know me{' '}
+            <motion.span
+              initial={{ opacity: 0.5 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                duration: 1,
+                repeat: Infinity,
+                repeatType: 'mirror',
+                ease: 'easeInOut',
+              }}
+            >
+              ↓
+            </motion.span>
+          </motion.h2>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
-
-export default App;

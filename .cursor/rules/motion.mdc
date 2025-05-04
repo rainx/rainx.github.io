@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Motion
+
+Use motion(https://motion.dev/docs) to handle the motion effect.
+
+Use React version: https://motion.dev/docs/react-quick-start
