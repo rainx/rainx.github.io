@@ -1,6 +1,6 @@
+import { useRef } from 'react';
 import { AnimatePresence, motion, useTransform } from 'motion/react';
 import styles from './story-section-hometown.module.css';
-import { useRef } from 'react';
 import hometownImage from '../assets/story-section-hometown.png';
 import { useScrollSection } from '../hooks/use-scroll-section';
 
@@ -91,7 +91,7 @@ export function StorySectionHometown() {
                 exit={{ opacity: 0 }}
               >
                 I was born in Shanhaiguan, a beautiful coastal town in China,
-                where the Great Wall meets the sea. It's a charming place
+                where the Great Wall meets the sea. It’s a charming place
                 nestled between mountains and ocean, offering a comfortable and
                 peaceful way of life.
               </motion.p>
@@ -110,7 +110,7 @@ export function StorySectionHometown() {
                 }}
               />
             </div>
-            <div className={styles.sectionBackgroundLayer}></div>
+            <div className={styles.sectionBackgroundLayer} />
           </div>
         </motion.section>
       </motion.section>

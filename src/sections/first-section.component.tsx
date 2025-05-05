@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
 import styles from './first-section.module.css';
 import { Logo } from '../logo.component';
-import { AnimatePresence, motion } from 'motion/react';
 
 export function FirstSection() {
   const [isSeeMoreVisible, setIsSeeMoreVisible] = useState(true);

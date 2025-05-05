@@ -1,16 +1,16 @@
 import { useMemo, useRef, useState } from 'react';
+import toast from 'react-hot-toast';
+import { useMediaQuery } from '@uidotdev/usehooks';
 import {
   motion,
   AnimatePresence,
   useTransform,
   useMotionValueEvent,
 } from 'motion/react';
-import { useScrollSection } from '../hooks/use-scroll-section';
 import styles from './story-section-basic.module.css';
-import basicSprite from '../assets/story-section-basic.png';
 import basicSpriteLight from '../assets/story-section-basic-light.svg';
-import toast from 'react-hot-toast';
-import { useMediaQuery } from '@uidotdev/usehooks';
+import basicSprite from '../assets/story-section-basic.png';
+import { useScrollSection } from '../hooks/use-scroll-section';
 
 const BASIC_PROGRAM = `
 10 REM BASIC PROGRAM
@@ -157,7 +157,7 @@ export function StorySectionBasic() {
                       repeat: Infinity,
                       repeatType: 'loop',
                     }}
-                  ></motion.div>
+                  />
                   <code>
                     <motion.span style={{ fontWeight: 'bold' }}>
                       {codeToDisplay}
@@ -181,19 +181,23 @@ export function StorySectionBasic() {
                       <li>
                         {isRunning ? (
                           <a
+                            role="button"
+                            tabIndex={0}
                             onClick={() => {
                               setIsRunning(false);
                             }}
                           >
-                            <i className="fa-solid fa-stop"></i>
+                            <i className="fa-solid fa-stop" />
                           </a>
                         ) : (
                           <a
+                            role="button"
+                            tabIndex={0}
                             onClick={() => {
                               setIsRunning(true);
                             }}
                           >
-                            <i className="fa-solid fa-play"></i>
+                            <i className="fa-solid fa-play" />
                           </a>
                         )}
                       </li>
@@ -204,7 +208,7 @@ export function StorySectionBasic() {
                           rel="noopener noreferrer"
                           title="Online BASIC emulator"
                         >
-                          <i className="fa-solid fa-square-arrow-up-right"></i>
+                          <i className="fa-solid fa-square-arrow-up-right" />
                         </a>
                       </li>
                       <li>
@@ -214,13 +218,16 @@ export function StorySectionBasic() {
                           rel="noopener noreferrer"
                           title="Apple II Basic Programming Manual"
                         >
-                          <i className="fa-solid fa-book"></i>
+                          <i className="fa-solid fa-book" />
                         </a>
                       </li>
                       <li>
                         <a
-                          onClick={() => {
-                            navigator.clipboard.writeText(BASIC_PROGRAM);
+                          role="button"
+                          tabIndex={0}
+                          // eslint-disable-next-line @typescript-eslint/no-misused-promises
+                          onClick={async () => {
+                            await navigator.clipboard.writeText(BASIC_PROGRAM);
                             toast.success(
                               <span>
                                 Copied to clipboard, paste it into this{' '}
@@ -236,7 +243,7 @@ export function StorySectionBasic() {
                             );
                           }}
                         >
-                          <i className="fa-solid fa-copy"></i>
+                          <i className="fa-solid fa-copy" />
                         </a>
                       </li>
                     </ul>
@@ -276,7 +283,7 @@ export function StorySectionBasic() {
                 </motion.div>
               </AnimatePresence>
             </motion.div>
-            <div className={styles.sectionBackgroundLayer}></div>
+            <div className={styles.sectionBackgroundLayer} />
           </div>
         </motion.section>
       </motion.section>

@@ -1,5 +1,5 @@
+import type { RefObject } from 'react';
 import { useMotionValue, useMotionValueEvent, useScroll } from 'motion/react';
-import { RefObject } from 'react';
 import { ElementHelpers } from '../helpers/element-helpers';
 
 export function useScrollSection(
@@ -22,23 +22,22 @@ export function useScrollSection(
 
       const sectionHeight = sectionRef.current.clientHeight;
       const wrapperHeight = wrapperRef.current.clientHeight;
-      // console.log(
-      //   latest,
-      //   offsetY,
-      //   sectionHeight,
-      //   wrapperHeight,
-      //   offsetY >= 0 && offsetY < wrapperHeight - sectionHeight,
-      // );
+
       if (offsetY > 0 && offsetY < wrapperHeight) {
         isSectionFixed.set(true);
+        // eslint-disable-next-line no-param-reassign
         sectionRef.current.style.position = 'fixed';
+        // eslint-disable-next-line no-param-reassign
         sectionRef.current.style.top = '0px';
       } else {
         isSectionFixed.set(false);
+        // eslint-disable-next-line no-param-reassign
         sectionRef.current.style.position = 'absolute';
         if (offsetY >= wrapperHeight) {
+          // eslint-disable-next-line no-param-reassign
           sectionRef.current.style.top = `${wrapperHeight - sectionHeight}px`;
         } else if (offsetY < 0) {
+          // eslint-disable-next-line no-param-reassign
           sectionRef.current.style.top = '0px';
         }
       }

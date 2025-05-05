@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
-import styles from './progress-indicator.module.css';
 import {
   AnimatePresence,
   motion,
   useMotionValue,
   useTransform,
 } from 'motion/react';
+import styles from './progress-indicator.module.css';
 
 export function ProgressIndicator() {
   const progress = useMotionValue(0);
   const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const progressPercentage = useTransform(() => progress.get() + '%');
+  const progressPercentage = useTransform(() => `${progress.get()}%`);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,7 +30,7 @@ export function ProgressIndicator() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [progress]);
 
   const handleClick = (percentage: number) => {
     const windowHeight = window.innerHeight;
