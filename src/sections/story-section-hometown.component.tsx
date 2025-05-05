@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { AnimatePresence, motion, useTransform } from 'motion/react';
 import styles from './story-section-hometown.module.css';
+import hometownImageBaby from '../assets/story-section-hometown-baby.png';
 import hometownImage from '../assets/story-section-hometown.png';
 import { useScrollSection } from '../hooks/use-scroll-section';
 
@@ -17,8 +18,8 @@ export function StorySectionHometown() {
 
   const sectionImageOpacity = useTransform(
     scrollYProgress,
-    [0, 0.3, 1],
-    [0, 0, 1],
+    [0, 0.3, 0.7, 1],
+    [0, 0, 1, 1],
   );
 
   const sectionHeadingTransform = useTransform(
@@ -52,8 +53,14 @@ export function StorySectionHometown() {
 
   const sectionParagraphOpacity = useTransform(
     scrollYProgress,
-    [0, 0.7, 0.9, 1],
+    [0, 0.3, 0.7, 1],
     [0, 0, 1, 1],
+  );
+
+  const sectionSpeechBubbleOpacity = useTransform(
+    scrollYProgress,
+    [0, 0, 0.7, 0.8, 1],
+    [0, 0, 0, 1, 1],
   );
 
   return (
@@ -97,6 +104,33 @@ export function StorySectionHometown() {
               </motion.p>
             </div>
             <div className={styles.sectionSpriteLayer}>
+              <motion.div
+                className={styles.bubbleWrapper}
+                style={{
+                  opacity: sectionSpeechBubbleOpacity,
+                }}
+              >
+                <motion.div
+                  className={styles.speechBubble}
+                  initial={{ rotate: 0 }}
+                  animate={{ rotate: [10, -10] }}
+                  exit={{ rotate: 0 }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    repeatType: 'reverse',
+                  }}
+                >
+                  <motion.img
+                    data-tooltip-id="tooltip"
+                    data-tooltip-content="Jing Xu (RainX)"
+                    src={hometownImageBaby}
+                    alt="Home Town Baby"
+                    className={styles.speechBubbleImage}
+                  />
+                </motion.div>
+              </motion.div>
+
               <motion.img
                 className={styles.hometownImage}
                 src={hometownImage}

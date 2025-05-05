@@ -32,6 +32,24 @@
   left: 0;
   height: 100%;
   width: 100%;
+
+  h2 {
+    display: block;
+    position: absolute;
+    flex-direction: column;
+    z-index: 100;
+    left: 10vw;
+  }
+
+  p {
+    display: block;
+    position: absolute;
+    flex-direction: column;
+    z-index: 100;
+    margin-right: 10vw;
+    left: 10vw;
+    top: 20vh;
+  }
 }
 
 .sectionSpriteLayer {
@@ -44,6 +62,59 @@
   left: 0;
   width: 100%;
   height: 100%;
+
+  .bubbleWrapper {
+    width: 100%;
+    height: 100%;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    .speechBubble {
+      position: relative;
+      background: #a59573;
+      border-radius: 2vh;
+      padding: 2px 5px 2px 2px;
+      z-index: 20;
+      margin-bottom: -5vh;
+      margin-right: 5vw;
+
+      .speechBubbleImage {
+        object-fit: cover;
+        object-position: center;
+        border-radius: 2vh;
+        width: 10vh;
+        height: 10vh;
+      }
+    }
+
+    .speechBubble:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border: 20px solid transparent;
+      border-top-color: #a59573;
+      border-bottom: 0;
+      border-left: 0;
+      margin-left: -10px;
+      margin-bottom: -20px;
+    }
+  }
+
+  .hometownImage {
+    width: 50vw;
+    height: 50vh;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+    margin-bottom: 10vh;
+  }
 }
 
 .sectionBackgroundLayer {
@@ -56,31 +127,4 @@
   left: 0;
   width: 100%;
   height: 100%;
-}
-
-.hometownImage {
-  width: 50vw;
-  height: 50vh;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 10px;
-  margin-bottom: 10vh;
-}
-
-.sectionTypographyLayer h2 {
-  display: block;
-  position: absolute;
-  flex-direction: column;
-  z-index: 100;
-  left: 10vw;
-}
-
-.sectionTypographyLayer p {
-  display: block;
-  position: absolute;
-  flex-direction: column;
-  z-index: 100;
-  margin-right: 10vw;
-  left: 10vw;
-  top: 20vh;
 }

@@ -41,6 +41,11 @@
   }
 }
 
+/** Global reset */
+* {
+  box-sizing: border-box;
+}
+
 html,
 body,
 #root {
