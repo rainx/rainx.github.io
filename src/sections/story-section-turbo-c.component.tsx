@@ -128,7 +128,7 @@ export function StorySectionTurboC() {
                   style={{
                     opacity: screenSpriteWrapperOpacity,
                     x: screenSpriteWrapperX,
-                    display: isScreenSpriteVisible ? 'block' : 'none',
+                    display: isScreenSpriteVisible ? 'flex' : 'none',
                   }}
                 >
                   <motion.div
