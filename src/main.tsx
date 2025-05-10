@@ -8,6 +8,7 @@ import { FirstSection } from './sections/first-section.component';
 import { StorySectionBasic } from './sections/story-section-basic.component';
 import { StorySectionHometown } from './sections/story-section-hometown.component';
 import { StorySectionTurboC } from './sections/story-section-turbo-c.component';
+import { StorySectionWorkExperience } from './sections/story-section-work-experience.component';
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <StorySectionHometown />
     <StorySectionBasic />
     <StorySectionTurboC />
+    <StorySectionWorkExperience />
     <Toaster />
     <Tooltip id="tooltip" />
   </React.StrictMode>,
