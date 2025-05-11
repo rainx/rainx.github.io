@@ -7,6 +7,7 @@ import { ProgressIndicator } from './components/progress-indicator.component';
 import { FirstSection } from './sections/first-section.component';
 import { StorySectionBasic } from './sections/story-section-basic.component';
 import { StorySectionHometown } from './sections/story-section-hometown.component';
+import { StorySectionStartups } from './sections/story-section-startups.component';
 import { StorySectionTurboC } from './sections/story-section-turbo-c.component';
 import { StorySectionWorkExperience } from './sections/story-section-work-experience.component';
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -18,6 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <StorySectionBasic />
     <StorySectionTurboC />
     <StorySectionWorkExperience />
+    <StorySectionStartups />
     <Toaster />
     <Tooltip id="tooltip" />
   </React.StrictMode>,

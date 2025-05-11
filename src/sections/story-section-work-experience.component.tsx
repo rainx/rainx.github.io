@@ -4,6 +4,7 @@ import {
   AnimatePresence,
   useTransform,
   useMotionValueEvent,
+  useMotionValue,
 } from 'motion/react';
 import styles from './story-section-work-experience.module.css';
 import alibabaLogoOnWall from '../assets/alibaba-logo-on-wall.png';
@@ -35,6 +36,14 @@ export function StorySectionWorkExperience() {
     return progress >= threshold ? '#FF4012' : 'white';
   };
 
+  const dotColors = [
+    useMotionValue(getDotColor(0)),
+    useMotionValue(getDotColor(1)),
+    useMotionValue(getDotColor(2)),
+    useMotionValue(getDotColor(3)),
+    useMotionValue(getDotColor(4)),
+  ];
+
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     if (latest < 0.2) {
       setIsYahooWordingVisible(false);
@@ -46,6 +55,10 @@ export function StorySectionWorkExperience() {
       setIsYahooWordingVisible(false);
       setIsAlibabaWordingVisible(true);
     }
+
+    DOTS.forEach((_, index) => {
+      dotColors[index].set(getDotColor(index));
+    });
   });
 
   const yahooLogoX = useTransform(
@@ -195,14 +208,11 @@ export function StorySectionWorkExperience() {
                       position: 'absolute',
                       width: '2px',
                       height: '2px',
-                      backgroundColor: getDotColor(index),
+                      backgroundColor: dotColors[index],
                       borderRadius: '50%',
                       left: `calc(${dot.left} / 1024 * 100%)`,
                       top: `calc(${dot.top} / 1024 * 100%)`,
                       zIndex: 3,
-                    }}
-                    animate={{
-                      backgroundColor: getDotColor(index),
                     }}
                     transition={{
                       duration: 0.3,
@@ -216,7 +226,7 @@ export function StorySectionWorkExperience() {
                     src={yahooLogoOnWall}
                     alt="Yahoo Logo"
                     className={styles.workCompanyLogoYahoo}
-                    initial={{ opacity: 0 }}
+                    initial={{ opacity: 0.7 }}
                     animate={{ opacity: 1 }}
                     style={{ left: yahooLogoX, top: yahooLogoY }}
                     transition={{ duration: 1, ease: 'easeInOut' }}
@@ -227,7 +237,7 @@ export function StorySectionWorkExperience() {
                     src={alibabaLogoOnWall}
                     alt="Alibaba Logo"
                     className={styles.workCompanyLogoAlibaba}
-                    initial={{ opacity: 0 }}
+                    initial={{ opacity: 0.7 }}
                     animate={{ opacity: 1 }}
                     style={{ left: alibabaLogoX, top: alibabaLogoY }}
                     transition={{ duration: 1, ease: 'easeInOut' }}

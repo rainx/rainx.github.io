@@ -14,7 +14,8 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "pnpm build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "convert-to-webp": "tsx scripts/convert-to-webp.ts"
   },
   "dependencies": {
     "@uidotdev/usehooks": "^2.4.1",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "@rightcapital/eslint-config-typescript-react": "^17.0.3",
     "@rightcapital/prettier-config": "^6.0.16",
+    "@types/node": "^22.15.17",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
@@ -38,6 +40,8 @@
     "gh-pages": "^6.3.0",
     "postcss": "^8.5.3",
     "postcss-nesting": "^13.0.1",
+    "sharp": "^0.34.1",
+    "tsx": "^4.19.4",
     "typescript": "^5.7.3",
     "vite": "^5.4.14"
   }
