@@ -7,9 +7,9 @@ import {
   useMotionValue,
 } from 'motion/react';
 import styles from './story-section-work-experience.module.css';
-import alibabaLogoOnWall from '../assets/alibaba-logo-on-wall.png';
-import workOfficeBackground from '../assets/story-section-work-office-background.png';
-import yahooLogoOnWall from '../assets/yahoo-logo-on-wall.png';
+import alibabaLogoOnWall from '../assets/alibaba-logo-on-wall.webp';
+import workOfficeBackground from '../assets/story-section-work-office-background.webp';
+import yahooLogoOnWall from '../assets/yahoo-logo-on-wall.webp';
 import { useScrollSection } from '../hooks/use-scroll-section';
 
 const DOTS = [

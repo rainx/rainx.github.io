@@ -9,7 +9,7 @@ import {
 } from 'motion/react';
 import styles from './story-section-basic.module.css';
 import basicSpriteLight from '../assets/story-section-basic-light.svg';
-import basicSprite from '../assets/story-section-basic.png';
+import basicSprite from '../assets/story-section-basic.webp';
 import { useScrollSection } from '../hooks/use-scroll-section';
 
 const BASIC_PROGRAM = `

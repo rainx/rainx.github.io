@@ -8,7 +8,7 @@ import {
 } from 'motion/react';
 import styles from './story-section-turbo-c.module.css';
 import turboCLightImage from '../assets/story-section-turbo-c-light.svg';
-import turboCImage from '../assets/story-section-turbo-c.png';
+import turboCImage from '../assets/story-section-turbo-c.webp';
 import { Tetris } from '../components/tetris.component';
 import { useScrollSection } from '../hooks/use-scroll-section';
 
