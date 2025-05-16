@@ -38,7 +38,7 @@ importers:
         version: 17.0.3(eslint-plugin-i@2.29.0(@typescript-eslint/parser@6.12.0(eslint@8.57.1)(typescript@5.7.3))(eslint-import-resolver-typescript@3.6.1)(eslint@8.57.1))(eslint@8.57.1)(typescript@5.7.3)
       '@rightcapital/prettier-config':
         specifier: ^6.0.16
-        version: 6.0.16(prettier@3.5.1)
+        version: 6.0.16(prettier@3.5.3)
       '@types/node':
         specifier: ^22.15.17
         version: 22.15.17
@@ -75,6 +75,9 @@ importers:
       postcss-nesting:
         specifier: ^13.0.1
         version: 13.0.1(postcss@8.5.3)
+      prettier:
+        specifier: ^3.5.3
+        version: 3.5.3
       sharp:
         specifier: ^0.34.1
         version: 0.34.1
@@ -1943,8 +1946,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@3.5.1:
-    resolution: {integrity: sha512-hPpFQvHwL3Qv5AdRvBFMhnKo4tYxp0ReXiPn2bxkiohEX6mBeBwEpBSQTkD458RaaDKQMYSp4hX4UtfUTA5wDw==}
+  prettier@3.5.3:
+    resolution: {integrity: sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2776,9 +2779,9 @@ snapshots:
       - eslint-import-resolver-webpack
       - supports-color
 
-  '@rightcapital/prettier-config@6.0.16(prettier@3.5.1)':
+  '@rightcapital/prettier-config@6.0.16(prettier@3.5.3)':
     dependencies:
-      prettier: 3.5.1
+      prettier: 3.5.3
 
   '@rollup/rollup-android-arm-eabi@4.34.7':
     optional: true
@@ -4254,7 +4257,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier@3.5.1: {}
+  prettier@3.5.3: {}
 
   prop-types@15.8.1:
     dependencies:
