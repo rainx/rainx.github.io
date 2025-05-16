@@ -6,6 +6,8 @@ import './styles/index.css';
 import { ProgressIndicator } from './components/progress-indicator.component';
 import { FirstSection } from './sections/first-section.component';
 import { StorySectionBasic } from './sections/story-section-basic.component';
+import { StorySectionFamily } from './sections/story-section-family.component';
+import StorySectionHobbies from './sections/story-section-hobbies.component';
 import { StorySectionHometown } from './sections/story-section-hometown.component';
 import { StorySectionStartups } from './sections/story-section-startups.component';
 import { StorySectionTurboC } from './sections/story-section-turbo-c.component';
@@ -20,6 +22,8 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <StorySectionTurboC />
     <StorySectionWorkExperience />
     <StorySectionStartups />
+    <StorySectionFamily />
+    <StorySectionHobbies />
     <Toaster />
     <Tooltip id="tooltip" />
   </React.StrictMode>,

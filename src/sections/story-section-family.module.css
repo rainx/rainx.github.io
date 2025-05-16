@@ -47,6 +47,12 @@
     display: block;
     z-index: 100;
     color: #666;
+
+    span {
+      display: inline-block;
+      text-wrap: wrap;
+      break-words: true;
+    }
   }
 }
 
@@ -61,15 +67,23 @@
   width: 100%;
   height: 100%;
 
-  .startupBackgroundWrapper {
+  .sakanaWidgetWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
     position: relative;
-    width: min(60vw, 60vh);
-    height: min(60vw, 60vh);
+    width: 100%;
+    height: 100%;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    height: 50vh;
     margin-bottom: 10vh;
   }
 }
 
 .sectionBackgroundLayer {
+  background-color: #fdfcf8;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,21 +92,6 @@
   top: 0;
   left: 0;
   width: 100%;
+
   height: 100%;
-}
-
-.subtitle {
-  display: inline-block;
-}
-
-.mobileInternet {
-  color: #ff4012;
-}
-
-.quantTrading {
-  color: #2e7d32;
-}
-
-.fintech {
-  color: #5070e6;
 }

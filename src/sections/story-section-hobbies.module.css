@@ -1,0 +1,157 @@
+.wrapperSection {
+  height: 300vh;
+  position: relative;
+  background-color: #fff;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  top: 0;
+}
+
+.sectionScene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.sectionTypographyLayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding-left: 10vw;
+  padding-right: 10vw;
+  z-index: 100;
+  pointer-events: none;
+
+  h2 {
+    display: block;
+    color: #333;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  p {
+    display: block;
+    color: #666;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    pointer-events: none;
+    z-index: 100;
+  }
+}
+
+.sectionSpriteLayer {
+  position: absolute;
+  padding-bottom: 10vh;
+  left: 10vw;
+  right: 10vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  perspective: 1000px;
+  z-index: 5;
+}
+
+.card {
+  position: absolute;
+  width: max(150px, calc((100vw - 20vw) / 4));
+  height: max(200px, calc((100vw - 20vw) / 4 * 1.33));
+  transform-origin: center bottom;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  transform: rotate(calc(var(--card-index) * 15deg - 22.5deg)) translateY(0);
+  will-change: transform;
+}
+
+.sectionSpriteLayer .card {
+  transform: rotate(calc(var(--card-index) * 15deg - 22.5deg)) translateY(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+.sectionSpriteLayer .card:hover,
+.sectionSpriteLayer .card[style*='--card-hovered: 1'] {
+  transform: rotate(calc(var(--card-index) * 15deg - 22.5deg)) translateY(-10%)
+    scale(1.05);
+  z-index: max(var(--card-z-index), 11);
+}
+
+.sectionSpriteLayer .card:hover ~ .card,
+.sectionSpriteLayer .card[style*='--card-hovered: 1'] ~ .card {
+  transform: rotate(calc(var(--card-index) * 15deg - 22.5deg + 5deg))
+    translateY(0);
+}
+
+.sectionSpriteLayer .card:hover + .card,
+.sectionSpriteLayer .card[style*='--card-hovered: 1'] + .card {
+  transform: rotate(calc(var(--card-index) * 15deg - 22.5deg - 5deg))
+    translateY(0);
+}
+
+.card.selected {
+  transform: rotate(calc(var(--card-index) * 15deg - 22.5deg)) translateY(-20%)
+    scale(1.1);
+  z-index: var(--card-z-index);
+}
+
+.cardContent {
+  width: 100%;
+  height: 100%;
+  background: var(--card-bg-color);
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.cardImage {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.cardTitle {
+  margin: 15px 0 10px;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.sectionBackgroundLayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #faf6f0;
+  z-index: 0;
+}

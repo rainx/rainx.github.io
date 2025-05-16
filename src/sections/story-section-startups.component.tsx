@@ -1,34 +1,33 @@
 import { useRef, useState } from 'react';
 import { motion, AnimatePresence, useMotionValueEvent } from 'motion/react';
 import styles from './story-section-startups.module.css';
+import fintechImage from '../assets/story-section-startup-fintech.webp';
+import mobileAppImage from '../assets/story-section-startup-mobile-app.webp';
+import quantTradingImage from '../assets/story-section-startup-quant-trading.webp';
 import { useScrollSection } from '../hooks/use-scroll-section';
 
-const DOTS = [
-  { left: 365, top: 480 },
-  { left: 375, top: 476 },
-  { left: 385, top: 472 },
-];
+enum StartupStage {
+  MOBILE_INTERNET = 'MOBILE_INTERNET',
+  QUANT_TRADING = 'QUANT_TRADING',
+  FINTECH = 'FINTECH',
+}
 
 export function StorySectionStartups() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScrollSection(sectionRef, wrapperRef);
 
-  const [currentStage, setCurrentStage] = useState<number>(0);
-
-  const getDotColor = (index: number) => {
-    const progress = scrollYProgress.get();
-    const threshold = (index + 1) * 0.33; // 33%, 66%, 100%
-    return progress >= threshold ? '#FF4012' : 'white';
-  };
+  const [currentStage, setCurrentStage] = useState<StartupStage>(
+    StartupStage.MOBILE_INTERNET,
+  );
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     if (latest < 0.33) {
-      setCurrentStage(0);
+      setCurrentStage(StartupStage.MOBILE_INTERNET);
     } else if (latest < 0.66) {
-      setCurrentStage(1);
+      setCurrentStage(StartupStage.QUANT_TRADING);
     } else {
-      setCurrentStage(2);
+      setCurrentStage(StartupStage.FINTECH);
     }
   });
 
@@ -46,14 +45,48 @@ export function StorySectionStartups() {
                   ease: 'easeInOut',
                 }}
               >
-                Worked in startups
+                Worked in startups{' '}
+                <AnimatePresence>
+                  {currentStage === StartupStage.MOBILE_INTERNET && (
+                    <motion.span
+                      key="mobile-internet"
+                      className={`${styles.subtitle} ${styles.mobileInternet}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, ease: 'easeInOut' }}
+                    >
+                      - Mobile internet
+                    </motion.span>
+                  )}
+                  {currentStage === StartupStage.QUANT_TRADING && (
+                    <motion.span
+                      key="quant-trading"
+                      className={`${styles.subtitle} ${styles.quantTrading}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, ease: 'easeInOut' }}
+                    >
+                      - Quantitative trading
+                    </motion.span>
+                  )}
+                  {currentStage === StartupStage.FINTECH && (
+                    <motion.span
+                      key="fintech"
+                      className={`${styles.subtitle} ${styles.fintech}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, ease: 'easeInOut' }}
+                    >
+                      - Fintech
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </motion.h2>
               <AnimatePresence mode="wait">
-                {currentStage === 0 && (
+                {currentStage === StartupStage.MOBILE_INTERNET && (
                   <motion.p
                     initial={{ opacity: 0, y: '5vh' }}
                     animate={{ opacity: 1, y: '0vh' }}
-                    exit={{ opacity: 0, y: '-5vh' }}
                     transition={{
                       duration: 1,
                       ease: 'easeInOut',
@@ -64,11 +97,10 @@ export function StorySectionStartups() {
                     boom of the mobile internet industry.
                   </motion.p>
                 )}
-                {currentStage === 1 && (
+                {currentStage === StartupStage.QUANT_TRADING && (
                   <motion.p
                     initial={{ opacity: 0, y: '5vh' }}
                     animate={{ opacity: 1, y: '0vh' }}
-                    exit={{ opacity: 0, y: '-5vh' }}
                     transition={{
                       duration: 1,
                       ease: 'easeInOut',
@@ -81,11 +113,10 @@ export function StorySectionStartups() {
                     project)
                   </motion.p>
                 )}
-                {currentStage === 2 && (
+                {currentStage === StartupStage.FINTECH && (
                   <motion.p
                     initial={{ opacity: 0, y: '5vh' }}
                     animate={{ opacity: 1, y: '0vh' }}
-                    exit={{ opacity: 0, y: '-5vh' }}
                     transition={{
                       duration: 1,
                       ease: 'easeInOut',
@@ -109,28 +140,59 @@ export function StorySectionStartups() {
                 }}
                 exit={{ opacity: 0 }}
               >
-                {DOTS.map((dot, index) => (
-                  <motion.div
-                    key={`dot-${dot.left}-${dot.top}`}
-                    style={{
-                      position: 'absolute',
-                      width: '2px',
-                      height: '2px',
-                      backgroundColor: getDotColor(index),
-                      borderRadius: '50%',
-                      left: `calc(${dot.left} / 1024 * 100%)`,
-                      top: `calc(${dot.top} / 1024 * 100%)`,
-                      zIndex: 3,
-                    }}
-                    animate={{
-                      backgroundColor: getDotColor(index),
-                    }}
-                    transition={{
-                      duration: 0.3,
-                      ease: 'easeInOut',
-                    }}
-                  />
-                ))}
+                <AnimatePresence mode="wait">
+                  {currentStage === StartupStage.MOBILE_INTERNET && (
+                    <motion.img
+                      key="mobile-app"
+                      src={mobileAppImage}
+                      alt="Mobile App Development"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 1.2 }}
+                      transition={{ duration: 0.5 }}
+                      style={{
+                        position: 'absolute',
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                  )}
+                  {currentStage === StartupStage.QUANT_TRADING && (
+                    <motion.img
+                      key="quant-trading"
+                      src={quantTradingImage}
+                      alt="Quantitative Trading"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 1.2 }}
+                      transition={{ duration: 0.5 }}
+                      style={{
+                        position: 'absolute',
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                  )}
+                  {currentStage === StartupStage.FINTECH && (
+                    <motion.img
+                      key="fintech"
+                      src={fintechImage}
+                      alt="Fintech"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 1.2 }}
+                      transition={{ duration: 0.5 }}
+                      style={{
+                        position: 'absolute',
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                      }}
+                    />
+                  )}
+                </AnimatePresence>
               </motion.div>
             </div>
             <div className={styles.sectionBackgroundLayer} />
