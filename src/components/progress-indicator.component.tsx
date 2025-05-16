@@ -30,7 +30,9 @@ export function ProgressIndicator() {
       const documentHeight =
         document.documentElement.scrollHeight - windowHeight;
       const scrollTop = window.scrollY;
-      if (scrollTop > 10) {
+      const isNearBottom = documentHeight - scrollTop <= 10;
+
+      if (scrollTop > 10 && !isNearBottom) {
         setIsVisible(true);
       } else {
         setIsVisible(false);

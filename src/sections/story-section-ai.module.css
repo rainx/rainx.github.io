@@ -71,3 +71,19 @@ h2.title {
   line-height: 1.6;
   text-align: center;
 }
+
+.backToTop {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.backToTop:hover {
+  opacity: 0.8;
+}
