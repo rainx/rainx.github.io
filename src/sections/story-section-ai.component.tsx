@@ -9,7 +9,7 @@ export const StorySectionAI = () => {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id="ai">
       <div className={`${styles.content} ${isVisible ? styles.visible : ''}`}>
         <h1 className={styles.title}>♾️</h1>
         <p className={styles.description}>

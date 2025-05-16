@@ -7,6 +7,17 @@ import {
 } from 'motion/react';
 import styles from './progress-indicator.module.css';
 
+const STORY_SECTIONS = [
+  { id: 'hometown', label: 'Hometown' },
+  { id: 'basic', label: 'Basic' },
+  { id: 'turbo-c', label: 'Turbo C' },
+  { id: 'work-experience', label: 'Work Experience' },
+  { id: 'startups', label: 'Startups' },
+  { id: 'family', label: 'Family' },
+  { id: 'hobbies', label: 'Hobbies' },
+  { id: 'ai', label: 'AI' },
+];
+
 export function ProgressIndicator() {
   const progress = useMotionValue(0);
   const [isVisible, setIsVisible] = useState(false);
@@ -32,14 +43,11 @@ export function ProgressIndicator() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [progress]);
 
-  const handleClick = (percentage: number) => {
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.documentElement.scrollHeight - windowHeight;
-    const targetScroll = (percentage / 100) * documentHeight;
-    window.scrollTo({
-      top: targetScroll,
-      behavior: 'smooth',
-    });
+  const handleSectionClick = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -62,16 +70,21 @@ export function ProgressIndicator() {
               style={{ width: progressPercentage }}
             />
             <div className={styles.markers}>
-              {[0, 25, 50, 75, 100].map((marker) => (
-                <button
-                  type="button"
-                  key={marker}
-                  className={styles.marker}
-                  style={{ left: `${marker}%` }}
-                  onClick={() => handleClick(marker)}
-                  aria-label={`Jump to ${marker}% of the page`}
-                />
-              ))}
+              {STORY_SECTIONS.map((section, index) => {
+                const percentage = (index / (STORY_SECTIONS.length - 1)) * 100;
+                return (
+                  <button
+                    type="button"
+                    key={section.id}
+                    className={styles.marker}
+                    style={{ left: `${percentage}%` }}
+                    onClick={() => handleSectionClick(section.id)}
+                    aria-label={`Jump to ${section.label} section`}
+                    data-tooltip-id="tooltip"
+                    data-tooltip-content={section.label}
+                  />
+                );
+              })}
             </div>
             <motion.div
               className={styles.indicator}

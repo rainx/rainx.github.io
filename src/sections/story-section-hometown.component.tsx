@@ -65,7 +65,11 @@ export function StorySectionHometown() {
 
   return (
     <AnimatePresence>
-      <motion.section className={styles.wrapperSection} ref={wrapperRef}>
+      <motion.section
+        className={styles.wrapperSection}
+        ref={wrapperRef}
+        id="hometown"
+      >
         <motion.section className={styles.section} ref={sectionRef}>
           <div className={styles.sectionScene}>
             <div className={styles.sectionTypographyLayer}>
