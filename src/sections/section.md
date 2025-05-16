@@ -49,7 +49,7 @@ export function StorySectionHelloWorld() {
 
 ```css
 .wrapperSection {
-  height: 300vh;
+  height: 400vh;
   position: relative;
   background-color: #fff;
 }
