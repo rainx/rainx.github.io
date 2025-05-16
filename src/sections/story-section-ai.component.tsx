@@ -7,7 +7,7 @@ export function StorySectionAI() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const { scrollYProgress } = useScrollSection(sectionRef, wrapperRef);
+  useScrollSection(sectionRef, wrapperRef);
 
   return (
     <AnimatePresence>
