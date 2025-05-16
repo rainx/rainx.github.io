@@ -102,7 +102,7 @@ export function StorySectionHometown() {
                 exit={{ opacity: 0 }}
               >
                 I was born in Shanhaiguan, a beautiful coastal town in China,
-                where the Great Wall meets the sea. It's a charming place
+                where the Great Wall meets the sea. It&apos;s a charming place
                 nestled between mountains and ocean, offering a comfortable and
                 peaceful way of life.
               </motion.p>

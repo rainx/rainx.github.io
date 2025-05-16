@@ -14,7 +14,7 @@ export const StorySectionAI = () => {
         <h1 className={styles.title}>♾️</h1>
         <p className={styles.description}>
           I am collaborating with AI to accomplish the dreams and goals I
-          haven't yet achieved.
+          haven&apos;t yet achieved.
         </p>
       </div>
     </div>
