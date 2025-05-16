@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import { ProgressIndicator } from './components/progress-indicator.component';
 import { FirstSection } from './sections/first-section.component';
+import { StorySectionAI } from './sections/story-section-ai.component';
 import { StorySectionBasic } from './sections/story-section-basic.component';
 import { StorySectionFamily } from './sections/story-section-family.component';
 import StorySectionHobbies from './sections/story-section-hobbies.component';
@@ -24,6 +25,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <StorySectionStartups />
     <StorySectionFamily />
     <StorySectionHobbies />
+    <StorySectionAI />
     <Toaster />
     <Tooltip id="tooltip" />
   </React.StrictMode>,
