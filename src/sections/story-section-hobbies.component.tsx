@@ -91,7 +91,20 @@ const StorySectionHobbies: React.FC = () => {
                   ease: 'easeInOut',
                 }}
               >
-                My hobbies
+                My hobbies:{' '}
+                {hobbies.map((hobby, index) => (
+                  <span
+                    key={hobby.id}
+                    className={styles.hobbyLink}
+                    onMouseEnter={() => setHoveredCard(hobby.id)}
+                    onMouseLeave={() => setHoveredCard(undefined)}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    {hobby.name}
+                    {index < hobbies.length - 1 ? ', ' : ''}
+                  </span>
+                ))}
               </motion.h2>
               <AnimatePresence mode="wait">
                 {activeHobby && (

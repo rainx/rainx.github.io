@@ -30,18 +30,15 @@
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
   padding-left: 10vw;
   padding-right: 10vw;
   z-index: 100;
-  pointer-events: none;
 
   h2 {
     display: block;
     color: #333;
     z-index: 100;
-    pointer-events: none;
   }
 
   p {
@@ -154,4 +151,20 @@
   height: 100%;
   background-color: #faf6f0;
   z-index: 0;
+}
+
+.hobbyLinks {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.hobbyLink {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.hobbyLink:hover {
+  color: #000;
+  text-decoration: underline;
 }
