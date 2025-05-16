@@ -70,8 +70,8 @@
 
 .card {
   position: absolute;
-  width: max(150px, calc((100vw - 20vw) / 4));
-  height: max(200px, calc((100vw - 20vw) / 4 * 1.33));
+  width: max(200px, calc((100vw - 20vw) / 4));
+  height: max(300px, calc((100vw - 20vw) / 4 * 1.33));
   transform-origin: center bottom;
   transition: all 0.3s ease-in-out;
   cursor: pointer;

@@ -62,7 +62,7 @@ const StorySectionHobbies: React.FC = () => {
   );
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
-    if (latest >= 0.25 && latest < 0.375) {
+    if (latest >= 0 && latest < 0.375) {
       setHoveredCard(1);
     } else if (latest >= 0.375 && latest < 0.5) {
       setHoveredCard(2);
@@ -87,7 +87,7 @@ const StorySectionHobbies: React.FC = () => {
                   ease: 'easeInOut',
                 }}
               >
-                My Hobbies
+                My hobbies
               </motion.h2>
               <AnimatePresence mode="wait">
                 {activeHobby && (
@@ -122,7 +122,7 @@ const StorySectionHobbies: React.FC = () => {
                       '--card-hovered': hoveredCard === hobby.id ? 1 : 0,
                     } as React.CSSProperties
                   }
-                  onClick={() => setSelectedCard(hobby.id)}
+                  // onClick={() => setSelectedCard(hobby.id)}
                   onMouseEnter={() => setHoveredCard(hobby.id)}
                   onMouseLeave={() => setHoveredCard(undefined)}
                   role="button"
