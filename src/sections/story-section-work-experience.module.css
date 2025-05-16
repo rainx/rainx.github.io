@@ -1,0 +1,131 @@
+.wrapperSection {
+  height: 300vh;
+  position: relative;
+  background-color: #fff;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  top: 0;
+}
+
+.sectionScene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.sectionTypographyLayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding-left: 10vw;
+  padding-right: 10vw;
+
+  h2 {
+    display: block;
+    z-index: 100;
+
+    .workCompanyYahoo {
+      display: inline-block;
+      color: #8a2be2;
+    }
+
+    .workCompanyAlibaba {
+      display: inline-block;
+      color: #ff6a00;
+    }
+
+    /* passthrough the click event to the layer below */
+    pointer-events: none;
+  }
+
+  p {
+    display: block;
+    z-index: 100;
+    color: #666;
+  }
+}
+
+.sectionSpriteLayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  .workOfficeBackgroundWrapper {
+    position: relative;
+    width: min(60vw, 60vh);
+    height: min(60vw, 60vh);
+    margin-bottom: 10vh;
+
+    .workImage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+    }
+
+    .workCompanyLogoYahoo {
+      position: absolute;
+      /* left: calc(270 / 1024 * 100%);
+      top: calc(133 / 1024 * 100%); */
+      /* left: calc(114 / 1024 * 100%);
+      top: calc(229 / 1024 * 100%); */
+      width: calc(216 / 1024 * 100%);
+      height: calc(176 / 1024 * 100%);
+      object-fit: contain;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .workCompanyLogoAlibaba {
+      position: absolute;
+      /* left: calc(319 / 1024 * 100%);
+      top: calc(166 / 1024 * 100%); */
+      /* left: calc(114 / 1024 * 100%);
+      top: calc(266 / 1024 * 100%); */
+      width: calc(168 / 1024 * 100%);
+      height: calc(180 / 1024 * 100%);
+      object-fit: contain;
+      z-index: 2;
+      pointer-events: none;
+    }
+  }
+}
+
+.sectionBackgroundLayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,67 @@
+:root {
+  --bubble-size: min(20vw, 20vh);
+  --bubble-speed: 35s;
+  --bubble-color-hue-value: 38;
+}
+
+.bubble {
+  width: var(--bubble-size);
+  height: var(--bubble-size);
+  background: hsl(var(--bubble-color-hue-value), 100%, 71%);
+  border: calc(var(--bubble-size) * 0.09) solid
+    hsl(var(--bubble-color-hue-value), 100%, 81%);
+  position: absolute;
+  top: calc(50% - (var(--bubble-size) * 0.49));
+  left: calc(50% - (var(--bubble-size) * 0.49));
+  overflow: visible;
+  border-radius: 48% 40% 62% 47% / 61% 49% 64% 43%;
+  animation: rotate var(--bubble-speed) infinite linear;
+  z-index: 1;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(1turn);
+  }
+}
+
+.bubble:before {
+  content: '';
+  position: absolute;
+  top: calc(var(--bubble-size) * 0.1);
+  left: calc(var(--bubble-size) * 0.1);
+  width: calc(100% - (var(--bubble-size) * 0.3));
+  height: calc(100% - (var(--bubble-size) * 0.3));
+  background: hsl(var(--bubble-color-hue-value), 100%, 51%);
+  border: calc(var(--bubble-size) * 0.065) solid
+    hsl(var(--bubble-color-hue-value), 100%, 61%);
+  border-radius: 41% 40% 50% 55% / 49% 52% 51% 43%;
+  z-index: -2;
+  animation: rotateBefore var(--bubble-speed) infinite linear;
+}
+
+@keyframes rotateBefore {
+  0% {
+    transform: rotate(-2turn);
+  }
+}
+
+.bubble:after {
+  content: '';
+  position: absolute;
+  top: calc(var(--bubble-size) * 0.2);
+  left: calc(var(--bubble-size) * 0.2);
+  width: calc(100% - (var(--bubble-size) * 0.5));
+  height: calc(100% - (var(--bubble-size) * 0.5));
+  background: hsl(var(--bubble-color-hue-value), 100%, 31%);
+  border: calc(var(--bubble-size) * 0.05) solid
+    hsl(var(--bubble-color-hue-value), 100%, 41%);
+  border-radius: 42% 63% 51% 60% / 47% 62% 42% 52%;
+  animation: rotateAfter var(--bubble-speed) infinite linear;
+}
+
+@keyframes rotateAfter {
+  0% {
+    transform: rotate(2turn);
+  }
+}
