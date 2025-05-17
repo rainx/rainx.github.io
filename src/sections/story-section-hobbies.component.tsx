@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValueEvent } from 'motion/react';
 import styles from './story-section-hobbies.module.css';
 import hobbyBasket from '../assets/hobby-basket.webp';
@@ -11,9 +11,27 @@ interface IHobbyCard {
   id: number;
   name: string;
   description: string;
+  shortDescription?: string;
   backgroundColor: string;
   image: string;
 }
+
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  return isMobile;
+};
 
 const hobbies: IHobbyCard[] = [
   {
@@ -21,6 +39,7 @@ const hobbies: IHobbyCard[] = [
     name: 'K-pop',
     description:
       "🎵 I am into K-pop culture. I like K-pop girl groups like NewJeans, BLACKPINK, i-dle, ive, aespa, LE SSERAFIM, Twice, Girls Generation, Red Velvet, F(x), miss A, Kara, T-ara, AOA, Girl's Day, Apink, Sistar, 2NE1, 4Minute, Crayon Pop, ILLIT, SES, Fin.K.L, Baby V.O.X, and more.",
+    shortDescription: '🎵 I am into K-pop culture. I like K-pop girl groups.',
     backgroundColor: '#F7F2ED',
     image: hobbyKpop,
   },
@@ -56,10 +75,18 @@ const StorySectionHobbies: React.FC = () => {
   const { scrollYProgress } = useScrollSection(sectionRef, wrapperRef);
   const [selectedCard, setSelectedCard] = useState<number | null>(null);
   const [hoveredCard, setHoveredCard] = useState<number | undefined>(undefined);
+  const isMobile = useIsMobile();
 
   const activeHobby = hobbies.find(
     (hobby) => hobby.id === (hoveredCard ?? selectedCard),
   );
+
+  const getHobbyDescription = (hobby: IHobbyCard) => {
+    if (isMobile && hobby.shortDescription) {
+      return hobby.shortDescription;
+    }
+    return hobby.description;
+  };
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     if (latest >= 0 && latest < 0.375) {
@@ -118,7 +145,7 @@ const StorySectionHobbies: React.FC = () => {
                       ease: 'easeInOut',
                     }}
                   >
-                    {activeHobby.description}
+                    {getHobbyDescription(activeHobby)}
                   </motion.p>
                 )}
               </AnimatePresence>

@@ -51,6 +51,14 @@
   }
 }
 
+@media (max-width: 768px) {
+  .sectionTypographyLayer {
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+
 .sectionSpriteLayer {
   position: absolute;
   padding-bottom: 10vh;
