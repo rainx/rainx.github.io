@@ -7,6 +7,7 @@ export function useScrollSection(
   wrapperRef: RefObject<HTMLDivElement>,
 ) {
   const isSectionFixed = useMotionValue<boolean>(true);
+  const isInView = useMotionValue<boolean>(false);
   const { scrollY, scrollYProgress } = useScroll({
     target: wrapperRef,
     offset: ['start start', 'end end'],
@@ -15,9 +16,11 @@ export function useScrollSection(
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
     if (sectionRef.current && wrapperRef.current) {
       if (!ElementHelpers.isVisibleInViewportVertically(wrapperRef.current)) {
+        isInView.set(false);
         return;
       }
 
+      isInView.set(true);
       const offsetY = latest * wrapperRef.current.clientHeight;
 
       const sectionHeight = sectionRef.current.clientHeight;
@@ -48,5 +51,6 @@ export function useScrollSection(
     isSectionFixed,
     scrollY,
     scrollYProgress,
+    isInView,
   };
 }

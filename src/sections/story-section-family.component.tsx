@@ -55,14 +55,22 @@ sakanaWidgetMembers.map((member) => {
 export function StorySectionFamily() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScrollSection(sectionRef, wrapperRef);
+  const { scrollYProgress, isInView } = useScrollSection(
+    sectionRef,
+    wrapperRef,
+  );
   const isAspectRatioLowerThan1By1 = useMediaQuery('(max-aspect-ratio: 1/1)');
 
-  const [currentStage, setCurrentStage] = useState<FamilyStage>(
-    FamilyStage.STAGE_1,
+  const [currentStage, setCurrentStage] = useState<FamilyStage | undefined>(
+    undefined,
   );
 
   useMotionValueEvent(scrollYProgress, 'change', (latest) => {
+    if (!isInView) {
+      setCurrentStage(undefined);
+      return;
+    }
+
     if (latest < 0.33) {
       setCurrentStage(FamilyStage.STAGE_1);
     } else if (latest < 0.66) {
@@ -94,21 +102,22 @@ export function StorySectionFamily() {
               </motion.h2>
               <p>
                 <AnimatePresence>
-                  {[FamilyStage.STAGE_2, FamilyStage.STAGE_3].includes(
-                    currentStage,
-                  ) && (
-                    <motion.span
-                      initial={{ opacity: 0, y: '5vh' }}
-                      animate={{ opacity: 1, y: '0vh' }}
-                      transition={{
-                        duration: 1,
-                        ease: 'easeInOut',
-                      }}
-                      key="stage-2"
-                    >
-                      I met and married my wife, Titikaka.{' '}
-                    </motion.span>
-                  )}
+                  {currentStage &&
+                    [FamilyStage.STAGE_2, FamilyStage.STAGE_3].includes(
+                      currentStage,
+                    ) && (
+                      <motion.span
+                        initial={{ opacity: 0, y: '5vh' }}
+                        animate={{ opacity: 1, y: '0vh' }}
+                        transition={{
+                          duration: 1,
+                          ease: 'easeInOut',
+                        }}
+                        key="stage-2"
+                      >
+                        I met and married my wife, Titikaka.{' '}
+                      </motion.span>
+                    )}
                   {currentStage === FamilyStage.STAGE_3 && (
                     <motion.span
                       initial={{ opacity: 0, y: '5vh' }}
@@ -127,77 +136,79 @@ export function StorySectionFamily() {
               </p>
             </div>
             <div className={styles.sectionSpriteLayer}>
-              <div className={styles.sakanaWidgetWrapper}>
-                {isAspectRatioLowerThan1By1 ? (
-                  // For narrow screens, show only one character based on stage
-                  <>
-                    {currentStage === FamilyStage.STAGE_1 && (
-                      <SakanaWidgetComponent
-                        options={{
-                          title: true,
-                          character: 'Jing',
-                          size: ScreenHelpers.getPixelByVh(50),
-                        }}
-                      />
-                    )}
-                    {currentStage === FamilyStage.STAGE_2 && (
-                      <SakanaWidgetComponent
-                        options={{
-                          title: true,
-                          character: 'Titikaka',
-                          size: ScreenHelpers.getPixelByVh(50),
-                        }}
-                      />
-                    )}
-                    {currentStage === FamilyStage.STAGE_3 && (
-                      <SakanaWidgetComponent
-                        options={{
-                          title: true,
-                          character: 'Jane',
-                          size: ScreenHelpers.getPixelByVh(50),
-                        }}
-                      />
-                    )}
-                  </>
-                ) : (
-                  // For wider screens, keep the original logic
-                  <>
-                    {[
-                      FamilyStage.STAGE_1,
-                      FamilyStage.STAGE_2,
-                      FamilyStage.STAGE_3,
-                    ].includes(currentStage) && (
-                      <SakanaWidgetComponent
-                        options={{
-                          title: true,
-                          character: 'Jing',
-                          size: ScreenHelpers.getPixelByVh(50),
-                        }}
-                      />
-                    )}
-                    {[FamilyStage.STAGE_2, FamilyStage.STAGE_3].includes(
-                      currentStage,
-                    ) && (
-                      <SakanaWidgetComponent
-                        options={{
-                          title: true,
-                          character: 'Titikaka',
-                          size: ScreenHelpers.getPixelByVh(50),
-                        }}
-                      />
-                    )}
-                    {currentStage === FamilyStage.STAGE_3 && (
-                      <SakanaWidgetComponent
-                        options={{
-                          title: true,
-                          character: 'Jane',
-                          size: ScreenHelpers.getPixelByVh(50),
-                        }}
-                      />
-                    )}
-                  </>
-                )}
-              </div>
+              {currentStage && (
+                <div className={styles.sakanaWidgetWrapper}>
+                  {isAspectRatioLowerThan1By1 ? (
+                    // For narrow screens, show only one character based on stage
+                    <>
+                      {currentStage === FamilyStage.STAGE_1 && (
+                        <SakanaWidgetComponent
+                          options={{
+                            title: true,
+                            character: 'Jing',
+                            size: ScreenHelpers.getPixelByVh(50),
+                          }}
+                        />
+                      )}
+                      {currentStage === FamilyStage.STAGE_2 && (
+                        <SakanaWidgetComponent
+                          options={{
+                            title: true,
+                            character: 'Titikaka',
+                            size: ScreenHelpers.getPixelByVh(50),
+                          }}
+                        />
+                      )}
+                      {currentStage === FamilyStage.STAGE_3 && (
+                        <SakanaWidgetComponent
+                          options={{
+                            title: true,
+                            character: 'Jane',
+                            size: ScreenHelpers.getPixelByVh(50),
+                          }}
+                        />
+                      )}
+                    </>
+                  ) : (
+                    // For wider screens, keep the original logic
+                    <>
+                      {[
+                        FamilyStage.STAGE_1,
+                        FamilyStage.STAGE_2,
+                        FamilyStage.STAGE_3,
+                      ].includes(currentStage) && (
+                        <SakanaWidgetComponent
+                          options={{
+                            title: true,
+                            character: 'Jing',
+                            size: ScreenHelpers.getPixelByVh(50),
+                          }}
+                        />
+                      )}
+                      {[FamilyStage.STAGE_2, FamilyStage.STAGE_3].includes(
+                        currentStage,
+                      ) && (
+                        <SakanaWidgetComponent
+                          options={{
+                            title: true,
+                            character: 'Titikaka',
+                            size: ScreenHelpers.getPixelByVh(50),
+                          }}
+                        />
+                      )}
+                      {currentStage === FamilyStage.STAGE_3 && (
+                        <SakanaWidgetComponent
+                          options={{
+                            title: true,
+                            character: 'Jane',
+                            size: ScreenHelpers.getPixelByVh(50),
+                          }}
+                        />
+                      )}
+                    </>
+                  )}
+                </div>
+              )}
             </div>
             <div className={styles.sectionBackgroundLayer} />
           </div>
