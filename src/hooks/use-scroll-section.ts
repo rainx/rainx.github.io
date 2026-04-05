@@ -1,10 +1,11 @@
-import type { RefObject } from 'react';
 import { useMotionValue, useMotionValueEvent, useScroll } from 'motion/react';
+import type { RefObject } from 'react';
+
 import { ElementHelpers } from '../helpers/element-helpers';
 
 export function useScrollSection(
-  sectionRef: RefObject<HTMLDivElement>,
-  wrapperRef: RefObject<HTMLDivElement>,
+  sectionRef: RefObject<HTMLDivElement | null>,
+  wrapperRef: RefObject<HTMLDivElement | null>,
 ) {
   const isSectionFixed = useMotionValue<boolean>(true);
   const isInView = useMotionValue<boolean>(false);

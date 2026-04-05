@@ -1,8 +1,10 @@
-import React from 'react';
+import './styles/index.css';
+
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 import { Toaster } from 'react-hot-toast';
 import { Tooltip } from 'react-tooltip';
-import ReactDOM from 'react-dom/client';
-import './styles/index.css';
+
 import { ErrorBoundary } from './components/error-boundary.component';
 import { ProgressIndicator } from './components/progress-indicator.component';
 import { FirstSection } from './sections/first-section.component';
@@ -14,9 +16,10 @@ import { StorySectionHometown } from './sections/story-section-hometown.componen
 import { StorySectionStartups } from './sections/story-section-startups.component';
 import { StorySectionTurboC } from './sections/story-section-turbo-c.component';
 import { StorySectionWorkExperience } from './sections/story-section-work-experience.component';
+
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
     <ProgressIndicator />
     <FirstSection />
     <ErrorBoundary>
@@ -45,5 +48,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     </ErrorBoundary>
     <Toaster />
     <Tooltip id="tooltip" />
-  </React.StrictMode>,
+  </StrictMode>,
 );

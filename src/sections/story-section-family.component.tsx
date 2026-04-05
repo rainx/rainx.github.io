@@ -1,15 +1,17 @@
-import { useRef, useState } from 'react';
-import { useMediaQuery } from '@uidotdev/usehooks';
-import { motion, AnimatePresence, useMotionValueEvent } from 'motion/react';
 import 'sakana-widget/lib/index.css';
+
+import { useMediaQuery } from '@uidotdev/usehooks';
+import { AnimatePresence, motion, useMotionValueEvent } from 'motion/react';
+import { useRef, useState } from 'react';
 import SakanaWidget, { type SakanaWidgetCharacter } from 'sakana-widget';
 import { SakanaWidget as SakanaWidgetComponent } from 'sakana-widget-react';
-import styles from './story-section-family.module.css';
+
 import jingImage from '../assets/story-section-dad-jing.webp';
 import janeImage from '../assets/story-section-daughter-jane.webp';
 import titikakaImage from '../assets/story-section-mom-titikaka.webp';
 import { ScreenHelpers } from '../helpers/screen-helpers';
 import { useScrollSection } from '../hooks/use-scroll-section';
+import styles from './story-section-family.module.css';
 
 enum FamilyStage {
   STAGE_1 = 'STAGE_1',

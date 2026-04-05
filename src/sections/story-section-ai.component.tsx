@@ -1,7 +1,8 @@
-import { useRef, useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import styles from './story-section-ai.module.css';
+import { AnimatePresence,motion } from 'motion/react';
+import { useEffect,useRef, useState } from 'react';
+
 import { useScrollSection } from '../hooks/use-scroll-section';
+import styles from './story-section-ai.module.css';
 
 export function StorySectionAI() {
   const sectionRef = useRef<HTMLDivElement>(null);

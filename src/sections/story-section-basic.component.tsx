@@ -1,16 +1,17 @@
-import { useMemo, useRef, useState } from 'react';
-import toast from 'react-hot-toast';
 import { useMediaQuery } from '@uidotdev/usehooks';
 import {
-  motion,
   AnimatePresence,
-  useTransform,
+  motion,
   useMotionValueEvent,
+  useTransform,
 } from 'motion/react';
-import styles from './story-section-basic.module.css';
-import basicSpriteLight from '../assets/story-section-basic-light.svg';
+import { useMemo, useRef, useState } from 'react';
+import { toast } from 'react-hot-toast';
+
 import basicSprite from '../assets/story-section-basic.webp';
+import basicSpriteLight from '../assets/story-section-basic-light.svg';
 import { useScrollSection } from '../hooks/use-scroll-section';
+import styles from './story-section-basic.module.css';
 
 const BASIC_PROGRAM = `
 10 REM BASIC PROGRAM

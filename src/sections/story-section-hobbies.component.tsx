@@ -1,11 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence, useMotionValueEvent } from 'motion/react';
-import styles from './story-section-hobbies.module.css';
+import { AnimatePresence, motion, useMotionValueEvent } from 'motion/react';
+import React, { useEffect,useRef, useState } from 'react';
+
 import hobbyBasket from '../assets/hobby-basket.webp';
 import hobbyCycling from '../assets/hobby-cycling.webp';
 import hobbyKpop from '../assets/hobby-kpop.webp';
 import hobbyPingpong from '../assets/hobby-pingpong.webp';
 import { useScrollSection } from '../hooks/use-scroll-section';
+import styles from './story-section-hobbies.module.css';
 
 interface IHobbyCard {
   id: number;
@@ -69,7 +70,7 @@ const hobbies: IHobbyCard[] = [
   },
 ];
 
-const StorySectionHobbies: React.FC = () => {
+const StorySectionHobbies = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScrollSection(sectionRef, wrapperRef);

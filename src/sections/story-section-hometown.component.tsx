@@ -1,9 +1,10 @@
-import { useRef } from 'react';
 import { AnimatePresence, motion, useTransform } from 'motion/react';
-import styles from './story-section-hometown.module.css';
-import hometownImageBaby from '../assets/story-section-hometown-baby.webp';
+import { useRef } from 'react';
+
 import hometownImage from '../assets/story-section-hometown.webp';
+import hometownImageBaby from '../assets/story-section-hometown-baby.webp';
 import { useScrollSection } from '../hooks/use-scroll-section';
+import styles from './story-section-hometown.module.css';
 
 export function StorySectionHometown() {
   const sectionRef = useRef<HTMLDivElement>(null);

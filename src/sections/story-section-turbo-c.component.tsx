@@ -1,16 +1,17 @@
-import { useRef, useState } from 'react';
 import { useMediaQuery } from '@uidotdev/usehooks';
 import {
-  motion,
   AnimatePresence,
-  useTransform,
+  motion,
   useMotionValueEvent,
+  useTransform,
 } from 'motion/react';
-import styles from './story-section-turbo-c.module.css';
-import turboCLightImage from '../assets/story-section-turbo-c-light.svg';
+import { useRef, useState } from 'react';
+
 import turboCImage from '../assets/story-section-turbo-c.webp';
+import turboCLightImage from '../assets/story-section-turbo-c-light.svg';
 import { Tetris } from '../components/tetris.component';
 import { useScrollSection } from '../hooks/use-scroll-section';
+import styles from './story-section-turbo-c.module.css';
 
 const TURBO_C_PROGRAM = `
 #include <stdio.h>

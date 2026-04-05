@@ -1,16 +1,17 @@
-import { useRef, useState } from 'react';
 import {
-  motion,
   AnimatePresence,
-  useTransform,
-  useMotionValueEvent,
+  motion,
   useMotionValue,
+  useMotionValueEvent,
+  useTransform,
 } from 'motion/react';
-import styles from './story-section-work-experience.module.css';
+import { useRef, useState } from 'react';
+
 import alibabaLogoOnWall from '../assets/alibaba-logo-on-wall.webp';
 import workOfficeBackground from '../assets/story-section-work-office-background.webp';
 import yahooLogoOnWall from '../assets/yahoo-logo-on-wall.webp';
 import { useScrollSection } from '../hooks/use-scroll-section';
+import styles from './story-section-work-experience.module.css';
 
 const DOTS = [
   { left: 365, top: 480 },

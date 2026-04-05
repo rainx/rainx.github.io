@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
 import {
   AnimatePresence,
   motion,
   useMotionValue,
   useTransform,
 } from 'motion/react';
+import { useEffect, useRef, useState } from 'react';
+
 import styles from './progress-indicator.module.css';
 
 const STORY_SECTIONS = [

@@ -1,10 +1,11 @@
+import { AnimatePresence, motion, useMotionValueEvent } from 'motion/react';
 import { useRef, useState } from 'react';
-import { motion, AnimatePresence, useMotionValueEvent } from 'motion/react';
-import styles from './story-section-startups.module.css';
+
 import fintechImage from '../assets/story-section-startup-fintech.webp';
 import mobileAppImage from '../assets/story-section-startup-mobile-app.webp';
 import quantTradingImage from '../assets/story-section-startup-quant-trading.webp';
 import { useScrollSection } from '../hooks/use-scroll-section';
+import styles from './story-section-startups.module.css';
 
 enum StartupStage {
   MOBILE_INTERNET = 'MOBILE_INTERNET',
