@@ -29,10 +29,7 @@
   "name": "xprompt",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
-  "bin": {
-    "xprompt": "./dist/cli.js"
-  }
+  "type": "module"
 }
 ```
 
@@ -832,12 +829,15 @@ createRoot(document.getElementById('root')!).render(
 
 - [ ] **Step 4: Modify `vite.config.ts`**
 
-Update the Vite config to add the prompt sub-app as a second entry point. Note: use `import.meta.dirname` (available in Node 21.2+, which this project uses via modern Vite) instead of `__dirname` which is not available in ESM:
+Update the Vite config to add the prompt sub-app as a second entry point. Use the `fileURLToPath` + `import.meta.url` pattern for ESM compatibility (consistent with `cli.ts`):
 
 ```typescript
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [react()],
@@ -847,8 +847,8 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: path.resolve(import.meta.dirname, 'index.html'),
-        prompt: path.resolve(import.meta.dirname, 'prompt/index.html'),
+        main: path.resolve(__dirname, 'index.html'),
+        prompt: path.resolve(__dirname, 'prompt/index.html'),
       },
       output: {
         manualChunks: {
@@ -1360,7 +1360,7 @@ git commit -m "fix: resolve TypeScript config for prompt sub-app"
 
 ---
 
-### Task 13: Final integration test
+### Task 14: Final integration test
 
 **Files:** (no new files)
 
