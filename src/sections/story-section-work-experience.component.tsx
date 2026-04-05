@@ -204,6 +204,7 @@ export function StorySectionWorkExperience() {
                   src={workOfficeBackground}
                   alt="Work Experience"
                   className={styles.workImage}
+                  loading="lazy"
                 />
                 {DOTS.map((dot, index) => (
                   <motion.div

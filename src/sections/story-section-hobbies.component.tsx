@@ -189,6 +189,7 @@ const StorySectionHobbies: React.FC = () => {
                       src={hobby.image}
                       alt={hobby.name}
                       className={styles.cardImage}
+                      loading="lazy"
                     />
                     <h3 className={styles.cardTitle}>{hobby.name}</h3>
                   </div>

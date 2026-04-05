@@ -1,65 +1,34 @@
 .wrapperSection {
-  height: 400vh;
-  position: relative;
-  background-color: #fff;
+  composes: wrapperSection from '../styles/section-base.module.css';
 }
 
 .section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background-color: #fff;
-  top: 0;
+  composes: section from '../styles/section-base.module.css';
 }
 
 .sectionScene {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  composes: sectionScene from '../styles/section-base.module.css';
 }
 
 .sectionTypographyLayer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  padding-left: 10vw;
-  padding-right: 10vw;
+  composes: sectionTypographyLayer from '../styles/section-base.module.css';
 
   h2 {
     display: block;
     z-index: 100;
-    color: #333;
-    /* passthrough the click event to the layer below */
+    color: var(--color-text-primary);
     pointer-events: none;
   }
 
   p {
     display: block;
     z-index: 100;
-    color: #666;
+    color: var(--color-text-tertiary);
   }
 }
 
 .sectionSpriteLayer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  composes: sectionSpriteLayer from '../styles/section-base.module.css';
 
   .startupBackgroundWrapper {
     position: relative;
@@ -70,15 +39,7 @@
 }
 
 .sectionBackgroundLayer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  composes: sectionBackgroundLayer from '../styles/section-base.module.css';
 }
 
 .subtitle {

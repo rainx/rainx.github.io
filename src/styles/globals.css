@@ -2,6 +2,19 @@
   --color-brand-yellow: #f7ea48;
   --color-brand-blue: #004b87;
 
+  /* Text colors */
+  --color-text-primary: #333;
+  --color-text-secondary: #555;
+  --color-text-tertiary: #666;
+
+  /* Surface colors (section backgrounds) */
+  --color-surface-white: #fff;
+  --color-surface-warm: #faf6f0;
+  --color-surface-warm-light: #fdfcf8;
+
+  /* Section scroll height */
+  --section-scroll-height: 400vh;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -61,13 +74,13 @@ section {
   h2 {
     font-size: 40px;
     font-weight: 600;
-    color: #555;
+    color: var(--color-text-secondary);
   }
 
   p {
     font-size: 20px;
     font-weight: 400;
-    color: #333;
+    color: var(--color-text-primary);
   }
 
   @media (max-width: 768px) {

@@ -231,20 +231,24 @@ export function StorySectionBasic() {
                           tabIndex={0}
                           // eslint-disable-next-line @typescript-eslint/no-misused-promises
                           onClick={async () => {
-                            await navigator.clipboard.writeText(BASIC_PROGRAM);
-                            toast.success(
-                              <span>
-                                Copied to clipboard, paste it into this{' '}
-                                <a
-                                  href="https://www.calormen.com/jsbasic/"
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  title="Online BASIC emulator"
-                                >
-                                  online BASIC emulator
-                                </a>
-                              </span>,
-                            );
+                            try {
+                              await navigator.clipboard.writeText(BASIC_PROGRAM);
+                              toast.success(
+                                <span>
+                                  Copied to clipboard, paste it into this{' '}
+                                  <a
+                                    href="https://www.calormen.com/jsbasic/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    title="Online BASIC emulator"
+                                  >
+                                    online BASIC emulator
+                                  </a>
+                                </span>,
+                              );
+                            } catch {
+                              toast.error('Failed to copy to clipboard');
+                            }
                           }}
                         >
                           <i className="fa-solid fa-copy" />
@@ -283,6 +287,7 @@ export function StorySectionBasic() {
                     className={styles.basicSprite}
                     src={basicSprite}
                     alt="BASIC"
+                    loading="lazy"
                   />
                 </motion.div>
               </AnimatePresence>

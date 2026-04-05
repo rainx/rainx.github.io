@@ -229,6 +229,7 @@ export function StorySectionTurboC() {
                     className={styles.turboCSprite}
                     src={turboCImage}
                     alt="Turbo C"
+                    loading="lazy"
                   />
                 </motion.div>
               </AnimatePresence>

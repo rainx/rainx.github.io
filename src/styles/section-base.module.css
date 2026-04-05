@@ -1,0 +1,61 @@
+.wrapperSection {
+  height: var(--section-scroll-height);
+  position: relative;
+  background-color: var(--color-surface-white);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--color-surface-white);
+  top: 0;
+}
+
+.sectionScene {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.sectionTypographyLayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+.sectionSpriteLayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sectionBackgroundLayer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

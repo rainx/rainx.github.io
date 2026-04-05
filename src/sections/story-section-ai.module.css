@@ -1,25 +1,13 @@
 .wrapperSection {
-  height: 400vh;
-  position: relative;
-  background-color: #fff;
+  composes: wrapperSection from '../styles/section-base.module.css';
 }
 
 .section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background-color: #fff;
-  top: 0;
+  composes: section from '../styles/section-base.module.css';
 }
 
 .sectionScene {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  composes: sectionScene from '../styles/section-base.module.css';
 }
 
 .sectionTypographyLayer {
@@ -30,33 +18,18 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
   height: 100%;
-  padding: 0 10vw;
+  width: 100%;
+  padding-left: 10vw;
+  padding-right: 10vw;
 }
 
 .sectionSpriteLayer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  composes: sectionSpriteLayer from '../styles/section-base.module.css';
 }
 
 .sectionBackgroundLayer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  composes: sectionBackgroundLayer from '../styles/section-base.module.css';
 }
 
 h2.title {
@@ -78,7 +51,7 @@ h2.title {
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.5rem;
-  color: #333;
+  color: var(--color-text-primary);
   text-align: center;
   z-index: 1000;
   transition: opacity 0.3s ease;

@@ -3,6 +3,7 @@ import { Toaster } from 'react-hot-toast';
 import { Tooltip } from 'react-tooltip';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
+import { ErrorBoundary } from './components/error-boundary.component';
 import { ProgressIndicator } from './components/progress-indicator.component';
 import { FirstSection } from './sections/first-section.component';
 import { StorySectionAI } from './sections/story-section-ai.component';
@@ -18,14 +19,30 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ProgressIndicator />
     <FirstSection />
-    <StorySectionHometown />
-    <StorySectionBasic />
-    <StorySectionTurboC />
-    <StorySectionWorkExperience />
-    <StorySectionStartups />
-    <StorySectionFamily />
-    <StorySectionHobbies />
-    <StorySectionAI />
+    <ErrorBoundary>
+      <StorySectionHometown />
+    </ErrorBoundary>
+    <ErrorBoundary>
+      <StorySectionBasic />
+    </ErrorBoundary>
+    <ErrorBoundary>
+      <StorySectionTurboC />
+    </ErrorBoundary>
+    <ErrorBoundary>
+      <StorySectionWorkExperience />
+    </ErrorBoundary>
+    <ErrorBoundary>
+      <StorySectionStartups />
+    </ErrorBoundary>
+    <ErrorBoundary>
+      <StorySectionFamily />
+    </ErrorBoundary>
+    <ErrorBoundary>
+      <StorySectionHobbies />
+    </ErrorBoundary>
+    <ErrorBoundary>
+      <StorySectionAI />
+    </ErrorBoundary>
     <Toaster />
     <Tooltip id="tooltip" />
   </React.StrictMode>,
