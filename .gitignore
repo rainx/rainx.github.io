@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# xprompt
+prompts/catalog.json
+.superpowers/
