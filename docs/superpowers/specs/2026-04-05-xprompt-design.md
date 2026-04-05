@@ -142,7 +142,8 @@ xprompt list --category typography  # 按分类
 xprompt list --tag design           # 按标签
 
 # 显示单个片段
-xprompt show font-preferences       # 输出正文内容
+xprompt show font-preferences       # 原子片段：输出正文内容
+xprompt show presentation           # 组合片段：输出完整组合后内容（等同 compose）
 
 # 组合输出
 xprompt compose presentation        # 输出组合片段的完整拼接结果
@@ -158,6 +159,7 @@ xprompt build                       # 扫描 prompts/，输出 prompts/catalog.j
 - `includes` 引用了不存在的原子片段 ID → 报错 `Unknown atom ID: <id> in <composite-file>`，exit 1
 - `includes` 引用了组合片段 → 报错 `Composite cannot include another composite: <id>`，exit 1
 - ID 重复 → 报错 `Duplicate snippet ID: <id> in <file1> and <file2>`，exit 1
+- `compose --pick` 或 `show` 指定了不存在的 ID → 报错 `Unknown snippet ID: <id>`，exit 1
 
 ### 组合拼接规则
 
