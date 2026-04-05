@@ -4,6 +4,8 @@ name: 演示文稿制作
 includes:
   - font-preferences
   - color-palette
+  - grid-system
+  - ui-refinement
 tags: [presentation, design]
 description: 制作演示文稿时的完整提示词
 ---
