@@ -39,7 +39,10 @@ export function resolve(
       }
     }
 
-    const parts = composite.includes.map((id) => atomMap.get(id)!.content);
+    const parts = composite.includes.map((id) => {
+      const atom = atomMap.get(id)!;
+      return `### ${atom.name}\n\n${atom.content}`;
+    });
     if (composite.content) {
       parts.push(composite.content);
     }
@@ -55,7 +58,7 @@ export function composeByPick(atoms: AtomSnippet[], ids: string[]): string {
     if (!atom) {
       throw new Error(`Unknown snippet ID: "${id}"`);
     }
-    parts.push(atom.content);
+    parts.push(`### ${atom.name}\n\n${atom.content}`);
   }
   return parts.join('\n\n');
 }
