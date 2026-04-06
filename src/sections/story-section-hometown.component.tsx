@@ -1,4 +1,8 @@
-import { AnimatePresence, motion, useTransform } from 'motion/react';
+import {
+  motion,
+  useMotionValueEvent,
+  useTransform,
+} from 'motion/react';
 import { useRef } from 'react';
 
 import hometownImage from '../assets/story-section-hometown.webp';
@@ -9,6 +13,9 @@ import styles from './story-section-hometown.module.css';
 export function StorySectionHometown() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const hometownImageRef = useRef<HTMLImageElement>(null);
+  const bubbleWrapperRef = useRef<HTMLDivElement>(null);
+  const paragraphRef = useRef<HTMLParagraphElement>(null);
   const { scrollYProgress } = useScrollSection(sectionRef, wrapperRef);
 
   const sectionImageWidth = useTransform(
@@ -23,15 +30,16 @@ export function StorySectionHometown() {
     [0, 0, 1, 1],
   );
 
-  const sectionHeadingTransform = useTransform(
+  const sectionHeadingX = useTransform(
     scrollYProgress,
     [0, 0.3, 0.5, 1],
-    [
-      'translate(-50%, -50%)',
-      'translate(-50%, -50%)',
-      'translate(0%, 0%)',
-      'translate(0%, 0%)',
-    ],
+    ['-50%', '-50%', '0%', '0%'],
+  );
+
+  const sectionHeadingY = useTransform(
+    scrollYProgress,
+    [0, 0.3, 0.5, 1],
+    ['-50%', '-50%', '0%', '0%'],
   );
 
   const sectionHeadingLeft = useTransform(
@@ -64,95 +72,99 @@ export function StorySectionHometown() {
     [0, 0, 0, 1, 1],
   );
 
-  return (
-    <AnimatePresence>
-      <motion.section
-        className={styles.wrapperSection}
-        ref={wrapperRef}
-        id="hometown"
-      >
-        <motion.section className={styles.section} ref={sectionRef}>
-          <div className={styles.sectionScene}>
-            <div className={styles.sectionTypographyLayer}>
-              <motion.h2
-                initial={{
-                  opacity: 1,
-                  left: '50vw',
-                  top: '50vh',
-                  transform: 'translate(-50%, -50%)',
-                }}
-                style={{
-                  opacity: 1,
-                  left: sectionHeadingLeft,
-                  top: sectionHeadingTop,
-                  transform: sectionHeadingTransform,
-                }}
-                exit={{ opacity: 0 }}
-              >
-                Hometown
-              </motion.h2>
-              <motion.p
-                initial={{
-                  left: '10vw',
-                  top: '40vh',
-                }}
-                style={{
-                  opacity: sectionParagraphOpacity,
-                  top: sectionParagraphTop,
-                }}
-                exit={{ opacity: 0 }}
-              >
-                I was born in Shanhaiguan, a beautiful coastal town in China,
-                where the Great Wall meets the sea. It&apos;s a charming place
-                nestled between mountains and ocean, offering a comfortable and
-                peaceful way of life.
-              </motion.p>
-            </div>
-            <div className={styles.sectionSpriteLayer}>
-              <motion.div
-                className={styles.bubbleWrapper}
-                style={{
-                  opacity: sectionSpeechBubbleOpacity,
-                }}
-              >
-                <motion.div
-                  className={styles.speechBubble}
-                  initial={{ rotate: 0 }}
-                  animate={{ rotate: [10, -10] }}
-                  exit={{ rotate: 0 }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    repeatType: 'reverse',
-                  }}
-                >
-                  <motion.img
-                    data-tooltip-id="tooltip"
-                    data-tooltip-content="Jing Xu (RainX)"
-                    src={hometownImageBaby}
-                    alt="Home Town Baby"
-                    className={styles.speechBubbleImage}
-                  />
-                </motion.div>
-              </motion.div>
+  useMotionValueEvent(sectionImageOpacity, 'change', (latest) => {
+    if (hometownImageRef.current) {
+      hometownImageRef.current.style.opacity = String(latest);
+    }
+  });
 
-              <motion.img
-                className={styles.hometownImage}
-                src={hometownImage}
-                alt="Home Town"
-                initial={{ opacity: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 2 }}
-                style={{
-                  width: sectionImageWidth,
-                  opacity: sectionImageOpacity,
-                }}
-              />
-            </div>
-            <div className={styles.sectionBackgroundLayer} />
+  useMotionValueEvent(sectionSpeechBubbleOpacity, 'change', (latest) => {
+    if (bubbleWrapperRef.current) {
+      bubbleWrapperRef.current.style.opacity = String(latest);
+    }
+  });
+
+  useMotionValueEvent(sectionParagraphOpacity, 'change', (latest) => {
+    if (paragraphRef.current) {
+      paragraphRef.current.style.opacity = String(latest);
+    }
+  });
+
+  return (
+    <motion.section
+      className={styles.wrapperSection}
+      ref={wrapperRef}
+      id="hometown"
+    >
+      <motion.section className={styles.section} ref={sectionRef}>
+        <div className={styles.sectionScene}>
+          <div className={styles.sectionTypographyLayer}>
+            <motion.h2
+              style={{
+                opacity: 1,
+                left: sectionHeadingLeft,
+                top: sectionHeadingTop,
+                x: sectionHeadingX,
+                y: sectionHeadingY,
+              }}
+            >
+              Hometown
+            </motion.h2>
+            <motion.p
+              ref={paragraphRef}
+              style={{
+                left: '10vw',
+                opacity: 0,
+                top: sectionParagraphTop,
+              }}
+            >
+              I was born in Shanhaiguan, a beautiful coastal town in China,
+              where the Great Wall meets the sea. It&apos;s a charming place
+              nestled between mountains and ocean, offering a comfortable and
+              peaceful way of life.
+            </motion.p>
           </div>
-        </motion.section>
+          <div className={styles.sectionSpriteLayer}>
+            <motion.div
+              className={styles.bubbleWrapper}
+              ref={bubbleWrapperRef}
+              style={{
+                opacity: 0,
+              }}
+            >
+              <motion.div
+                className={styles.speechBubble}
+                animate={{ rotate: [10, -10] }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  repeatType: 'reverse',
+                }}
+              >
+                <motion.img
+                  data-tooltip-id="tooltip"
+                  data-tooltip-content="Jing Xu (RainX)"
+                  src={hometownImageBaby}
+                  alt="Home Town Baby"
+                  className={styles.speechBubbleImage}
+                />
+              </motion.div>
+            </motion.div>
+
+            <motion.img
+              ref={hometownImageRef}
+              className={styles.hometownImage}
+              src={hometownImage}
+              alt="Home Town"
+              style={{
+                width: sectionImageWidth,
+                opacity: 0,
+              }}
+            />
+          </div>
+          <div className={styles.sectionBackgroundLayer} />
+        </div>
       </motion.section>
-    </AnimatePresence>
+    </motion.section>
   );
 }
