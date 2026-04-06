@@ -6,6 +6,7 @@ includes:
   - color-palette
   - grid-system
   - ui-refinement
+  - rainx-design-taste
 tags: [presentation, design]
 description: 制作演示文稿时的完整提示词
 ---
