@@ -82,6 +82,16 @@ export function FirstSection() {
               <i className="fa-brands fa-unsplash" />
             </a>
           </li>
+          <li>
+            <a
+              href="/prompt/"
+              title="Prompt Snippets"
+              aria-label="Prompt Snippets"
+              className="prompt"
+            >
+              <i className="fa-solid fa-terminal" />
+            </a>
+          </li>
         </ul>
       </footer>
 
