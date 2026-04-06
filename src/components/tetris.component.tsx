@@ -285,18 +285,18 @@ export function Tetris() {
       }
     }
 
+    /* eslint-disable @eslint-react/no-array-index-key -- fixed-size Tetris grid */
     return displayBoard.map((row, y) => (
-
       <div key={y} className={styles.row}>
         {row.map((cell, x) => (
           <div
-      
             key={`${y}-${x}`}
             className={`${styles.cell} ${cell ? styles.filled : ''}`}
           />
         ))}
       </div>
     ));
+    /* eslint-enable @eslint-react/no-array-index-key */
   };
 
   return (

@@ -183,6 +183,7 @@ export function StorySectionTurboC() {
                           <a
                             role="button"
                             tabIndex={0}
+                            aria-label="Stop"
                             onClick={() => {
                               setIsRunning(false);
                             }}
@@ -193,6 +194,7 @@ export function StorySectionTurboC() {
                           <a
                             role="button"
                             tabIndex={0}
+                            aria-label="Run"
                             onClick={() => {
                               setIsRunning(true);
                             }}
@@ -207,6 +209,7 @@ export function StorySectionTurboC() {
                           target="_blank"
                           rel="noopener noreferrer"
                           title="Turbo C 2.0 Reference Manual"
+                          aria-label="Turbo C 2.0 Reference Manual"
                         >
                           <i className="fa-solid fa-book" />
                         </a>

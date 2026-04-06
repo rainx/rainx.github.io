@@ -26,6 +26,7 @@ export function FirstSection() {
             <a
               href="https://github.com/rainx"
               title="GitHub"
+              aria-label="GitHub"
               className="github"
             >
               <i className="fa-brands fa-github" />
@@ -35,6 +36,7 @@ export function FirstSection() {
             <a
               href="https://weibo.com/102068233"
               title="Weibo"
+              aria-label="Weibo"
               className="weibo"
             >
               <i className="fa-brands fa-weibo" />
@@ -44,6 +46,7 @@ export function FirstSection() {
             <a
               href="https://twitter.com/rainx"
               title="𝕏 - Twitter"
+              aria-label="Twitter"
               className="twitter"
             >
               <i className="fa-brands fa-x-twitter" />
@@ -53,6 +56,7 @@ export function FirstSection() {
             <a
               href="https://www.linkedin.com/in/jing-xu-rainx"
               title="Linked In"
+              aria-label="LinkedIn"
               className="linked-in"
             >
               <i className="fa-brands fa-linkedin-in" />
@@ -62,6 +66,7 @@ export function FirstSection() {
             <a
               href="https://www.instagram.com/rainx1982/"
               title="Instagram"
+              aria-label="Instagram"
               className="instagram"
             >
               <i className="fa-brands fa-instagram" />
@@ -71,6 +76,7 @@ export function FirstSection() {
             <a
               href="https://unsplash.com/@rainx1982"
               title="Unsplash"
+              aria-label="Unsplash"
               className="unsplash"
             >
               <i className="fa-brands fa-unsplash" />

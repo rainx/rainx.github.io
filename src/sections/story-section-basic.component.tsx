@@ -195,6 +195,7 @@ export function StorySectionBasic() {
                           <a
                             role="button"
                             tabIndex={0}
+                            aria-label="Stop"
                             onClick={() => {
                               setIsRunning(false);
                             }}
@@ -205,6 +206,7 @@ export function StorySectionBasic() {
                           <a
                             role="button"
                             tabIndex={0}
+                            aria-label="Run"
                             onClick={() => {
                               setIsRunning(true);
                             }}
@@ -219,6 +221,7 @@ export function StorySectionBasic() {
                           target="_blank"
                           rel="noopener noreferrer"
                           title="Online BASIC emulator"
+                          aria-label="Online BASIC emulator"
                         >
                           <i className="fa-solid fa-square-arrow-up-right" />
                         </a>
@@ -229,6 +232,7 @@ export function StorySectionBasic() {
                           target="_blank"
                           rel="noopener noreferrer"
                           title="Apple II Basic Programming Manual"
+                          aria-label="Apple II Basic Programming Manual"
                         >
                           <i className="fa-solid fa-book" />
                         </a>
@@ -237,6 +241,7 @@ export function StorySectionBasic() {
                         <a
                           role="button"
                           tabIndex={0}
+                          aria-label="Copy code"
                           // eslint-disable-next-line @typescript-eslint/no-misused-promises
                           onClick={async () => {
                             try {

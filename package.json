@@ -13,7 +13,7 @@
     "dev": "vite",
     "prebuild": "tsx tools/xprompt/src/cli.ts build",
     "build": "tsc && vite build",
-    "lint": "eslint --max-warnings 17",
+    "lint": "eslint --max-warnings 0",
     "preview": "vite preview",
     "predeploy": "pnpm build",
     "deploy": "gh-pages -d dist",
