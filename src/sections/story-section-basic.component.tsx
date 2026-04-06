@@ -245,7 +245,9 @@ export function StorySectionBasic() {
                           // eslint-disable-next-line @typescript-eslint/no-misused-promises
                           onClick={async () => {
                             try {
-                              await navigator.clipboard.writeText(BASIC_PROGRAM);
+                              await navigator.clipboard.writeText(
+                                BASIC_PROGRAM,
+                              );
                               toast.success(
                                 <span>
                                   Copied to clipboard, paste it into this{' '}

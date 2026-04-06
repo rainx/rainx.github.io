@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useMotionValueEvent } from 'motion/react';
-import React, { useEffect,useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import hobbyBasket from '../assets/hobby-basket.webp';
 import hobbyCycling from '../assets/hobby-cycling.webp';

@@ -1,8 +1,4 @@
-import {
-  motion,
-  useMotionValueEvent,
-  useTransform,
-} from 'motion/react';
+import { motion, useMotionValueEvent, useTransform } from 'motion/react';
 import { useRef } from 'react';
 
 import hometownImage from '../assets/story-section-hometown.webp';

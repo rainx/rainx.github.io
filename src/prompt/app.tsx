@@ -97,7 +97,11 @@ export function App() {
           </div>
           <div className={styles.typeFilters}>
             {(['all', 'atom', 'composite'] as const).map((t) => {
-              const labelMap = { all: 'all', atom: 'atoms', composite: 'composites' } as const;
+              const labelMap = {
+                all: 'all',
+                atom: 'atoms',
+                composite: 'composites',
+              } as const;
               return (
                 <button
                   type="button"
@@ -168,9 +172,7 @@ export function App() {
         </div>
         <div className={styles.preview}>
           {!selected ? (
-            <div className={styles.previewEmpty}>
-              点击左侧片段预览内容
-            </div>
+            <div className={styles.previewEmpty}>点击左侧片段预览内容</div>
           ) : (
             <>
               <div className={styles.previewHeader}>

@@ -6,7 +6,9 @@ import { resolve } from './resolver.js';
 import type { ICatalog } from './types.js';
 
 function findMdFiles(dir: string): string[] {
-  if (!fs.existsSync(dir)) {return [];}
+  if (!fs.existsSync(dir)) {
+    return [];
+  }
   const results: string[] = [];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   for (const entry of entries) {

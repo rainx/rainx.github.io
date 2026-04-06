@@ -17,6 +17,7 @@
 ### Task 1: Project scaffolding and dependencies
 
 **Files:**
+
 - Create: `tools/xprompt/package.json`
 - Create: `tools/xprompt/tsconfig.json`
 - Create: `tools/xprompt/src/types.ts`
@@ -110,6 +111,7 @@ git commit -m "feat(xprompt): scaffold CLI project with types"
 ### Task 2: Parser module
 
 **Files:**
+
 - Create: `tools/xprompt/src/parser.ts`
 
 The parser reads a markdown file, extracts YAML frontmatter via gray-matter, validates required fields, and returns a typed snippet object.
@@ -137,7 +139,11 @@ function validateRequired(
   filePath: string,
 ): void {
   for (const field of required) {
-    if (fields[field] === undefined || fields[field] === null || fields[field] === '') {
+    if (
+      fields[field] === undefined ||
+      fields[field] === null ||
+      fields[field] === ''
+    ) {
       throw new Error(`Missing required field "${field}" in ${filePath}`);
     }
   }
@@ -203,6 +209,7 @@ git commit -m "feat(xprompt): add markdown frontmatter parser"
 ### Task 3: Resolver module
 
 **Files:**
+
 - Create: `tools/xprompt/src/resolver.ts`
 
 The resolver takes parsed atoms and composites, validates constraints (no composite-includes-composite, no unknown IDs, no duplicate IDs), and fills in the `composed` field.
@@ -220,13 +227,17 @@ export function resolve(
   const allIds = new Map<string, string>();
   for (const a of atoms) {
     if (allIds.has(a.id)) {
-      throw new Error(`Duplicate snippet ID: "${a.id}" found in multiple files`);
+      throw new Error(
+        `Duplicate snippet ID: "${a.id}" found in multiple files`,
+      );
     }
     allIds.set(a.id, 'atom');
   }
   for (const c of composites) {
     if (allIds.has(c.id)) {
-      throw new Error(`Duplicate snippet ID: "${c.id}" found in multiple files`);
+      throw new Error(
+        `Duplicate snippet ID: "${c.id}" found in multiple files`,
+      );
     }
     allIds.set(c.id, 'composite');
   }
@@ -237,7 +248,9 @@ export function resolve(
     for (const refId of composite.includes) {
       const refType = allIds.get(refId);
       if (refType === undefined) {
-        throw new Error(`Unknown atom ID: "${refId}" in composite "${composite.id}"`);
+        throw new Error(
+          `Unknown atom ID: "${refId}" in composite "${composite.id}"`,
+        );
       }
       if (refType === 'composite') {
         throw new Error(
@@ -288,6 +301,7 @@ git commit -m "feat(xprompt): add snippet resolver with validation"
 ### Task 4: Catalog scanner
 
 **Files:**
+
 - Create: `tools/xprompt/src/catalog.ts`
 
 Scans the `prompts/atoms/` and `prompts/composites/` directories, parses all `.md` files, validates, resolves composites, and returns a `Catalog` object.
@@ -344,6 +358,7 @@ git commit -m "feat(xprompt): add catalog scanner"
 ### Task 5: CLI entry point and build command
 
 **Files:**
+
 - Create: `tools/xprompt/src/cli.ts`
 - Create: `tools/xprompt/src/commands/build.ts`
 
@@ -508,6 +523,7 @@ git commit -m "feat(xprompt): add CLI entry point, build command, and seed snipp
 ### Task 6: List command
 
 **Files:**
+
 - Create: `tools/xprompt/src/commands/list.ts`
 
 - [ ] **Step 1: Create `tools/xprompt/src/commands/list.ts`**
@@ -549,7 +565,8 @@ export function runList(promptsDir: string, args: string[]): void {
   const catalog = buildCatalog(promptsDir);
 
   let atoms: AtomSnippet[] = opts.type === 'composites' ? [] : catalog.atoms;
-  let composites: CompositeSnippet[] = opts.type === 'atoms' ? [] : catalog.composites;
+  let composites: CompositeSnippet[] =
+    opts.type === 'atoms' ? [] : catalog.composites;
 
   if (opts.category) {
     atoms = atoms.filter((a) => a.category === opts.category);
@@ -570,7 +587,9 @@ export function runList(promptsDir: string, args: string[]): void {
     console.log(`  [ATOM]      ${a.id.padEnd(24)} ${a.name}  (${a.category})`);
   }
   for (const c of composites) {
-    console.log(`  [COMPOSITE] ${c.id.padEnd(24)} ${c.name}  (${c.includes.length} snippets)`);
+    console.log(
+      `  [COMPOSITE] ${c.id.padEnd(24)} ${c.name}  (${c.includes.length} snippets)`,
+    );
   }
 
   const total = atoms.length + composites.length;
@@ -602,6 +621,7 @@ git commit -m "feat(xprompt): add list command with filtering"
 ### Task 7: Show command
 
 **Files:**
+
 - Create: `tools/xprompt/src/commands/show.ts`
 
 - [ ] **Step 1: Create `tools/xprompt/src/commands/show.ts`**
@@ -656,6 +676,7 @@ git commit -m "feat(xprompt): add show command"
 ### Task 8: Compose command
 
 **Files:**
+
 - Create: `tools/xprompt/src/commands/compose.ts`
 
 - [ ] **Step 1: Create `tools/xprompt/src/commands/compose.ts`**
@@ -666,7 +687,9 @@ import { composeByPick } from '../resolver.js';
 
 export function runCompose(promptsDir: string, args: string[]): void {
   if (args.length === 0) {
-    console.error('Usage: xprompt compose <id> | xprompt compose --pick <id1> <id2>...');
+    console.error(
+      'Usage: xprompt compose <id> | xprompt compose --pick <id1> <id2>...',
+    );
     process.exit(1);
   }
 
@@ -721,6 +744,7 @@ git commit -m "feat(xprompt): add compose command"
 ### Task 9: Add npm scripts to root package.json
 
 **Files:**
+
 - Modify: `package.json`
 
 - [ ] **Step 1: Add xprompt scripts to root `package.json`**
@@ -755,6 +779,7 @@ git commit -m "feat(xprompt): add npm scripts for CLI integration"
 ### Task 10: Web sub-app entry point and Vite config
 
 **Files:**
+
 - Create: `prompt/index.html` (project root level, so Vite outputs to `dist/prompt/index.html`)
 - Create: `src/prompt/main.tsx`
 - Create: `src/prompt/types.ts`
@@ -877,6 +902,7 @@ git commit -m "feat(prompt-web): add sub-app entry point and Vite multi-page con
 ### Task 11: Main App component with layout
 
 **Files:**
+
 - Create: `src/prompt/app.tsx`
 - Create: `src/prompt/app.module.css`
 
@@ -1165,7 +1191,9 @@ export function App() {
   const categories = useMemo(getCategories, []);
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const [activeType, setActiveType] = useState<'all' | 'atom' | 'composite'>('all');
+  const [activeType, setActiveType] = useState<'all' | 'atom' | 'composite'>(
+    'all',
+  );
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
@@ -1285,9 +1313,7 @@ export function App() {
         </div>
         <div className={styles.preview}>
           {!selected ? (
-            <div className={styles.previewEmpty}>
-              点击左侧片段预览内容
-            </div>
+            <div className={styles.previewEmpty}>点击左侧片段预览内容</div>
           ) : (
             <>
               <div className={styles.previewHeader}>
@@ -1339,6 +1365,7 @@ git commit -m "feat(prompt-web): add main app component with search, filter, and
 ### Task 13: Update tsconfig to exclude tools directory from main build
 
 **Files:**
+
 - Modify: `tsconfig.json`
 
 The main `tsconfig.json` includes `"src"` but `tsc` in the build step shouldn't compile `tools/`. Since `tools/` is outside `src/`, this should already work. However, the prompt sub-app imports `catalog.json` from `prompts/` which is outside `src/`. Verify and fix if needed.
@@ -1393,6 +1420,7 @@ pnpm preview
 ```
 
 Visit `http://localhost:4173/prompt/`:
+
 - Verify snippets appear in the left panel
 - Verify clicking a snippet shows preview on the right
 - Verify search filtering works

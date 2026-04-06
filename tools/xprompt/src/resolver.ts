@@ -42,7 +42,9 @@ export function resolve(
     const parts = composite.includes.map((id) => {
       const atom = atomMap.get(id);
       if (!atom) {
-        throw new Error(`Atom "${id}" not found for composite "${composite.id}"`);
+        throw new Error(
+          `Atom "${id}" not found for composite "${composite.id}"`,
+        );
       }
       return `### ${atom.name}\n\n${atom.content}`;
     });

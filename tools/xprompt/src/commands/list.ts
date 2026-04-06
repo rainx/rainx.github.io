@@ -38,8 +38,7 @@ export function runList(promptsDir: string, args: string[]): void {
   const opts = parseArgs(args);
   const catalog = buildCatalog(promptsDir);
 
-  let atoms: IAtomSnippet[] =
-    opts.type === 'composites' ? [] : catalog.atoms;
+  let atoms: IAtomSnippet[] = opts.type === 'composites' ? [] : catalog.atoms;
   let composites: ICompositeSnippet[] =
     opts.type === 'atoms' ? [] : catalog.composites;
 
@@ -61,9 +60,7 @@ export function runList(promptsDir: string, args: string[]): void {
 
   for (const a of atoms) {
     // eslint-disable-next-line no-console
-    console.log(
-      `  [ATOM]      ${a.id.padEnd(24)} ${a.name}  (${a.category})`,
-    );
+    console.log(`  [ATOM]      ${a.id.padEnd(24)} ${a.name}  (${a.category})`);
   }
   for (const c of composites) {
     // eslint-disable-next-line no-console

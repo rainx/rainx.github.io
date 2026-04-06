@@ -1,23 +1,19 @@
 {
   "name": "rainx.github.io",
-  "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "private": true,
   "homepage": "https://rainx.github.io/",
-  "engines": {
-    "pnpm": "^10.4.0"
-  },
-  "packageManager": "pnpm@10.11.0",
+  "type": "module",
   "scripts": {
-    "predev": "tsx tools/xprompt/src/cli.ts build",
-    "dev": "vite",
     "prebuild": "tsx tools/xprompt/src/cli.ts build",
     "build": "tsc && vite build",
-    "lint": "eslint --max-warnings 0",
-    "preview": "vite preview",
+    "convert-to-webp": "tsx scripts/convert-to-webp.ts",
     "predeploy": "pnpm build",
     "deploy": "gh-pages -d dist",
-    "convert-to-webp": "tsx scripts/convert-to-webp.ts",
+    "predev": "tsx tools/xprompt/src/cli.ts build",
+    "dev": "vite",
+    "lint": "eslint --max-warnings 0",
+    "preview": "vite preview",
     "xprompt": "tsx tools/xprompt/src/cli.ts"
   },
   "dependencies": {
@@ -47,5 +43,9 @@
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "vite": "^6.4.1"
+  },
+  "packageManager": "pnpm@10.11.0",
+  "engines": {
+    "pnpm": "^10.4.0"
   }
 }

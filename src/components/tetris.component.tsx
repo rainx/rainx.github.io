@@ -1,4 +1,4 @@
-import { useCallback,useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import styles from './tetris.module.css';
 
@@ -118,7 +118,9 @@ export function Tetris() {
     let linesCleared = 0;
     const newBoard = gameBoard.filter((row) => {
       const isFull = row.every((cell) => cell !== EMPTY_CELL);
-      if (isFull) {linesCleared += 1;}
+      if (isFull) {
+        linesCleared += 1;
+      }
       return !isFull;
     });
 
@@ -132,7 +134,9 @@ export function Tetris() {
   }, []);
 
   const moveDown = useCallback(() => {
-    if (!currentPiece || gameOver) {return;}
+    if (!currentPiece || gameOver) {
+      return;
+    }
 
     const newPiece = {
       ...currentPiece,
@@ -164,7 +168,9 @@ export function Tetris() {
   ]);
 
   const moveLeft = useCallback(() => {
-    if (!currentPiece || gameOver) {return;}
+    if (!currentPiece || gameOver) {
+      return;
+    }
 
     const newPiece = {
       ...currentPiece,
@@ -177,7 +183,9 @@ export function Tetris() {
   }, [board, currentPiece, gameOver, isValidMove]);
 
   const moveRight = useCallback(() => {
-    if (!currentPiece || gameOver) {return;}
+    if (!currentPiece || gameOver) {
+      return;
+    }
 
     const newPiece = {
       ...currentPiece,
@@ -190,7 +198,9 @@ export function Tetris() {
   }, [board, currentPiece, gameOver, isValidMove]);
 
   const rotate = useCallback(() => {
-    if (!currentPiece || gameOver) {return;}
+    if (!currentPiece || gameOver) {
+      return;
+    }
 
     const newShape = currentPiece.shape[0].map((_, i) =>
       currentPiece.shape.map((row) => row[i]).reverse(),

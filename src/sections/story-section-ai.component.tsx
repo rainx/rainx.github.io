@@ -1,5 +1,5 @@
-import { AnimatePresence,motion } from 'motion/react';
-import { useEffect,useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'motion/react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useScrollSection } from '../hooks/use-scroll-section';
 import styles from './story-section-ai.module.css';

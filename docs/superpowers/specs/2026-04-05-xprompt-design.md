@@ -10,16 +10,16 @@
 
 ## 架构决策
 
-| 决策项 | 选择 | 理由 |
-|--------|------|------|
-| 片段层级 | 两层（原子 + 组合） | 简洁，避免过度抽象 |
-| 元数据格式 | YAML frontmatter | 与 md 文件一体，git 友好 |
-| 组合方式 | frontmatter `includes` 字段引用原子片段 ID | 组合片段本身也是 md，可附加额外内容 |
-| Web 与主站关系 | Vite multi-page 独立子应用 | 与主站解耦，独立组件树 |
-| Web 数据源 | CLI `xprompt build` 预生成 `catalog.json` | Web 端零解析，纯消费 JSON |
-| CLI 语言 | Node.js / TypeScript | 与项目技术栈一致 |
-| Web 布局 | 左右分栏（列表 + 预览） | 信息密度高，浏览体验好 |
-| CLI 集成方式 | stdout + `--json` flag | 方便程序化调用和管道操作 |
+| 决策项         | 选择                                       | 理由                                |
+| -------------- | ------------------------------------------ | ----------------------------------- |
+| 片段层级       | 两层（原子 + 组合）                        | 简洁，避免过度抽象                  |
+| 元数据格式     | YAML frontmatter                           | 与 md 文件一体，git 友好            |
+| 组合方式       | frontmatter `includes` 字段引用原子片段 ID | 组合片段本身也是 md，可附加额外内容 |
+| Web 与主站关系 | Vite multi-page 独立子应用                 | 与主站解耦，独立组件树              |
+| Web 数据源     | CLI `xprompt build` 预生成 `catalog.json`  | Web 端零解析，纯消费 JSON           |
+| CLI 语言       | Node.js / TypeScript                       | 与项目技术栈一致                    |
+| Web 布局       | 左右分栏（列表 + 预览）                    | 信息密度高，浏览体验好              |
+| CLI 集成方式   | stdout + `--json` flag                     | 方便程序化调用和管道操作            |
 
 ## 片段文件结构
 
@@ -89,25 +89,25 @@ description: 制作演示文稿时的完整提示词
 
 **原子片段：**
 
-| 字段 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| `id` | string | 是 | 唯一标识符，kebab-case |
-| `name` | string | 是 | 显示名称 |
-| `category` | string | 是 | 分类（typography, visual, writing, technical 等） |
-| `tags` | string[] | 否 | 标签，用于搜索和过滤 |
-| `description` | string | 是 | 一行描述 |
+| 字段          | 类型     | 必填 | 说明                                              |
+| ------------- | -------- | ---- | ------------------------------------------------- |
+| `id`          | string   | 是   | 唯一标识符，kebab-case                            |
+| `name`        | string   | 是   | 显示名称                                          |
+| `category`    | string   | 是   | 分类（typography, visual, writing, technical 等） |
+| `tags`        | string[] | 否   | 标签，用于搜索和过滤                              |
+| `description` | string   | 是   | 一行描述                                          |
 
 分类（`category`）以 frontmatter 中的值为准，目录子文件夹仅为人工组织便利，不作为元数据来源。
 
 **组合片段：**
 
-| 字段 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| `id` | string | 是 | 唯一标识符，kebab-case |
-| `name` | string | 是 | 显示名称 |
-| `includes` | string[] | 是 | 引用的原子片段 ID 列表 |
-| `tags` | string[] | 否 | 标签 |
-| `description` | string | 是 | 一行描述 |
+| 字段          | 类型     | 必填 | 说明                   |
+| ------------- | -------- | ---- | ---------------------- |
+| `id`          | string   | 是   | 唯一标识符，kebab-case |
+| `name`        | string   | 是   | 显示名称               |
+| `includes`    | string[] | 是   | 引用的原子片段 ID 列表 |
+| `tags`        | string[] | 否   | 标签                   |
+| `description` | string   | 是   | 一行描述               |
 
 **约束：** `includes` 只能引用原子片段 ID。组合片段不能引用其他组合片段。`xprompt build` 时校验此约束，违反则报错退出。
 
@@ -193,7 +193,12 @@ xprompt build                       # 扫描 prompts/，输出 prompts/catalog.j
     {
       "id": "presentation",
       "name": "演示文稿制作",
-      "includes": ["font-preferences", "color-palette", "layout-principles", "content-structure"],
+      "includes": [
+        "font-preferences",
+        "color-palette",
+        "layout-principles",
+        "content-structure"
+      ],
       "tags": ["presentation", "design"],
       "description": "制作演示文稿时的完整提示词",
       "content": "## 额外指导\n- 每页内容不超过 3 个要点\n...",
