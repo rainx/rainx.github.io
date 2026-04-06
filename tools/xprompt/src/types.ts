@@ -1,4 +1,4 @@
-export interface AtomSnippet {
+export interface IAtomSnippet {
   id: string;
   name: string;
   category: string;
@@ -7,7 +7,7 @@ export interface AtomSnippet {
   content: string;
 }
 
-export interface CompositeSnippet {
+export interface ICompositeSnippet {
   id: string;
   name: string;
   includes: string[];
@@ -17,7 +17,7 @@ export interface CompositeSnippet {
   composed: string;
 }
 
-export interface Catalog {
-  atoms: AtomSnippet[];
-  composites: CompositeSnippet[];
+export interface ICatalog {
+  atoms: IAtomSnippet[];
+  composites: ICompositeSnippet[];
 }

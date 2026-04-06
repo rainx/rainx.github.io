@@ -1,13 +1,14 @@
 import { useCallback, useMemo, useState } from 'react';
+
 import catalog from '../../prompts/catalog.json';
 import styles from './app.module.css';
-import type { AtomSnippet, Catalog, CompositeSnippet } from './types';
+import type { IAtomSnippet, ICatalog, ICompositeSnippet } from './types';
 
 type Snippet =
-  | (AtomSnippet & { type: 'atom' })
-  | (CompositeSnippet & { type: 'composite' });
+  | (IAtomSnippet & { type: 'atom' })
+  | (ICompositeSnippet & { type: 'composite' });
 
-const data = catalog as Catalog;
+const data = catalog as ICatalog;
 
 function getAllSnippets(): Snippet[] {
   const atoms: Snippet[] = data.atoms.map((a) => ({ ...a, type: 'atom' }));
@@ -62,12 +63,16 @@ export function App() {
   );
 
   const getDisplayContent = useCallback((snippet: Snippet): string => {
-    if (snippet.type === 'composite') return snippet.composed;
+    if (snippet.type === 'composite') {
+      return snippet.composed;
+    }
     return snippet.content;
   }, []);
 
   const handleCopy = useCallback(async () => {
-    if (!selected) return;
+    if (!selected) {
+      return;
+    }
     await navigator.clipboard.writeText(getDisplayContent(selected));
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -91,18 +96,23 @@ export function App() {
             />
           </div>
           <div className={styles.typeFilters}>
-            {(['all', 'atom', 'composite'] as const).map((t) => (
-              <button
-                key={t}
-                className={`${styles.filterTag} ${activeType === t ? styles.filterTagActive : ''}`}
-                onClick={() => setActiveType(t)}
-              >
-                {t === 'all' ? 'all' : t === 'atom' ? 'atoms' : 'composites'}
-              </button>
-            ))}
+            {(['all', 'atom', 'composite'] as const).map((t) => {
+              const labelMap = { all: 'all', atom: 'atoms', composite: 'composites' } as const;
+              return (
+                <button
+                  type="button"
+                  key={t}
+                  className={`${styles.filterTag} ${activeType === t ? styles.filterTagActive : ''}`}
+                  onClick={() => setActiveType(t)}
+                >
+                  {labelMap[t]}
+                </button>
+              );
+            })}
           </div>
           <div className={styles.filters}>
             <button
+              type="button"
               className={`${styles.filterTag} ${activeCategory === null ? styles.filterTagActive : ''}`}
               onClick={() => setActiveCategory(null)}
             >
@@ -110,6 +120,7 @@ export function App() {
             </button>
             {categories.map((cat) => (
               <button
+                type="button"
                 key={cat}
                 className={`${styles.filterTag} ${activeCategory === cat ? styles.filterTagActive : ''}`}
                 onClick={() =>
@@ -127,8 +138,15 @@ export function App() {
               filtered.map((s) => (
                 <div
                   key={s.id}
+                  role="button"
+                  tabIndex={0}
                   className={`${styles.snippetItem} ${selectedId === s.id ? styles.snippetItemActive : ''}`}
                   onClick={() => setSelectedId(s.id)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      setSelectedId(s.id);
+                    }
+                  }}
                 >
                   <div className={styles.snippetLabel}>
                     <span
@@ -168,7 +186,9 @@ export function App() {
                 {getDisplayContent(selected)}
               </div>
               <button
+                type="button"
                 className={`${styles.copyButton} ${copied ? styles.copySuccess : ''}`}
+                // eslint-disable-next-line @typescript-eslint/no-misused-promises
                 onClick={handleCopy}
               >
                 {copied ? 'Copied!' : 'Copy'}

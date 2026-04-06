@@ -1,9 +1,9 @@
-import type { AtomSnippet, CompositeSnippet } from './types.js';
+import type { IAtomSnippet, ICompositeSnippet } from './types.js';
 
 export function resolve(
-  atoms: AtomSnippet[],
-  composites: CompositeSnippet[],
-): CompositeSnippet[] {
+  atoms: IAtomSnippet[],
+  composites: ICompositeSnippet[],
+): ICompositeSnippet[] {
   const allIds = new Map<string, string>();
   for (const a of atoms) {
     if (allIds.has(a.id)) {
@@ -40,7 +40,10 @@ export function resolve(
     }
 
     const parts = composite.includes.map((id) => {
-      const atom = atomMap.get(id)!;
+      const atom = atomMap.get(id);
+      if (!atom) {
+        throw new Error(`Atom "${id}" not found for composite "${composite.id}"`);
+      }
       return `### ${atom.name}\n\n${atom.content}`;
     });
     if (composite.content) {
@@ -50,7 +53,7 @@ export function resolve(
   });
 }
 
-export function composeByPick(atoms: AtomSnippet[], ids: string[]): string {
+export function composeByPick(atoms: IAtomSnippet[], ids: string[]): string {
   const atomMap = new Map(atoms.map((a) => [a.id, a]));
   const parts: string[] = [];
   for (const id of ids) {

@@ -1,11 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
+
 import { parseAtom, parseComposite } from './parser.js';
 import { resolve } from './resolver.js';
-import type { Catalog } from './types.js';
+import type { ICatalog } from './types.js';
 
 function findMdFiles(dir: string): string[] {
-  if (!fs.existsSync(dir)) return [];
+  if (!fs.existsSync(dir)) {return [];}
   const results: string[] = [];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   for (const entry of entries) {
@@ -19,7 +20,7 @@ function findMdFiles(dir: string): string[] {
   return results;
 }
 
-export function buildCatalog(promptsDir: string): Catalog {
+export function buildCatalog(promptsDir: string): ICatalog {
   const atomsDir = path.join(promptsDir, 'atoms');
   const compositesDir = path.join(promptsDir, 'composites');
 
@@ -30,6 +31,6 @@ export function buildCatalog(promptsDir: string): Catalog {
   return { atoms, composites };
 }
 
-export function writeCatalog(catalog: Catalog, outputPath: string): void {
-  fs.writeFileSync(outputPath, JSON.stringify(catalog, null, 2), 'utf-8');
+export function writeCatalog(catalog: ICatalog, outputPath: string): void {
+  fs.writeFileSync(outputPath, JSON.stringify(catalog, null, 2), 'utf8');
 }

@@ -1,6 +1,7 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+// eslint-disable-next-line no-underscore-dangle
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..', '..', '..');
 const PROMPTS_DIR = path.join(REPO_ROOT, 'prompts');
@@ -31,6 +32,7 @@ async function main() {
       break;
     }
     default:
+      // eslint-disable-next-line no-console
       console.log(`xprompt — composable prompt snippet manager
 
 Usage:
@@ -40,6 +42,7 @@ Usage:
   xprompt compose <id>                   Output composed snippet
   xprompt compose --pick <id1> <id2>...  Compose from selected atoms`);
       if (command) {
+        // eslint-disable-next-line no-console
         console.error(`\nUnknown command: ${command}`);
         process.exit(1);
       }
@@ -47,6 +50,7 @@ Usage:
 }
 
 main().catch((err: Error) => {
+  // eslint-disable-next-line no-console
   console.error(`Error: ${err.message}`);
   process.exit(1);
 });
