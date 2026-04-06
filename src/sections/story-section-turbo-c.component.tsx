@@ -31,6 +31,7 @@ const TURBO_C_PROGRAM_LENGTH = TURBO_C_PROGRAM.length;
 export function StorySectionTurboC() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const screenSpriteWrapperRef = useRef<HTMLDivElement>(null);
   const isAspectRatioLowerThan16By9 = useMediaQuery('(max-aspect-ratio: 16/9)');
   const { scrollYProgress } = useScrollSection(sectionRef, wrapperRef);
   const [isTurboCSpriteVisible, setIsTurboCSpriteVisible] =
@@ -70,6 +71,12 @@ export function StorySectionTurboC() {
     } else {
       setIsTurboCSpriteVisible(true);
       setIsScreenSpriteVisible(true);
+    }
+  });
+
+  useMotionValueEvent(screenSpriteWrapperOpacity, 'change', (latest) => {
+    if (screenSpriteWrapperRef.current) {
+      screenSpriteWrapperRef.current.style.opacity = String(latest);
     }
   });
 
@@ -130,8 +137,8 @@ export function StorySectionTurboC() {
               <AnimatePresence>
                 <motion.div
                   className={styles.screenSpriteWrapper}
+                  ref={screenSpriteWrapperRef}
                   style={{
-                    opacity: screenSpriteWrapperOpacity,
                     x: screenSpriteWrapperX,
                     display: isScreenSpriteVisible ? 'flex' : 'none',
                   }}

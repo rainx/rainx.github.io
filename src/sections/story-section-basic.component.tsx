@@ -41,6 +41,7 @@ Hello, RainX
 export function StorySectionBasic() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const screenSpriteWrapperRef = useRef<HTMLDivElement>(null);
   const [isRunning, setIsRunning] = useState(false);
   const isAspectRatioLowerThan16By9 = useMediaQuery('(max-aspect-ratio: 16/9)');
   const { scrollYProgress } = useScrollSection(sectionRef, wrapperRef);
@@ -82,6 +83,12 @@ export function StorySectionBasic() {
     } else {
       setIsBasicSpriteVisible(true);
       setIsScreenSpriteVisible(true);
+    }
+  });
+
+  useMotionValueEvent(screenSpriteWrapperOpacity, 'change', (latest) => {
+    if (screenSpriteWrapperRef.current) {
+      screenSpriteWrapperRef.current.style.opacity = String(latest);
     }
   });
 
@@ -146,8 +153,8 @@ export function StorySectionBasic() {
               <AnimatePresence>
                 <motion.div
                   className={styles.screenSpriteWrapper}
+                  ref={screenSpriteWrapperRef}
                   style={{
-                    opacity: screenSpriteWrapperOpacity,
                     x: screenSpriteWrapperX,
                     display: isScreenSpriteVisible ? 'block' : 'none',
                   }}
