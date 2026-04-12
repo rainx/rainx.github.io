@@ -26,3 +26,6 @@ dist-ssr
 # xprompt
 prompts/catalog.json
 .superpowers/
+
+# Claude Code local settings
+.claude/settings.local.json
